@@ -1,3 +1,41 @@
+body {
+  position: relative;
+}
+img {
+  width: 100%;
+}
+header {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+#logo-container {
+  width: 10em;
+}
+ul {
+  border: 1px solid red;
+  width: 100%;
+}
+li {
+  color: white;
+  list-style: none;
+}
+a {
+  color: white;
+}
+#background-image {
+  background-image: url(/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg);
+  background-size: cover;
+  height: 50vh;
+  filter: blur(6px);
+}
+#sub-body {
+  z-index: 2;
+  position: absolute;
+  top: 2em;
+}
 .slider-text {
     position: absolute;
     right: 0;
