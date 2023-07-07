@@ -26,7 +26,7 @@ a {
   color: white;
 }
 #background-image {
-  background-image: url(/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg);
+  background-image: url("/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
   height: 50vh;
   filter: blur(6px);
