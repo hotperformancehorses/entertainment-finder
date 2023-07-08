@@ -1,3 +1,4 @@
+// Code required for the carousel to be able to move//
 var slideIndex = 1;
 showSlides(slideIndex);
 
