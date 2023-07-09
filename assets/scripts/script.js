@@ -59,7 +59,9 @@ let genreClass = document.querySelectorAll(".genre");
 genreClass.forEach((el) => {
   el.addEventListener("click", (e) => {
     let currBtn = e.target;
-    // console.log(currBtn.dataset.id);
-    currBtn.setAttribute("href", `./search.html?genreId=${currBtn.dataset.id}`);
+    currBtn.setAttribute(
+      "href",
+      `./search.html?genreId=${currBtn.dataset.id}&genreName=${currBtn.dataset.name}`
+    );
   });
 });

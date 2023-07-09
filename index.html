@@ -13,7 +13,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"
     />
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
   </head>
   <body">
     <div id="background-image" class="hero is-halfheight"></div>
@@ -51,29 +51,31 @@
   
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link"> Genre </a>
-  
+               <!-- Data ids represents genre id's on api.watchmode/v1/genre -->
                 <div class="navbar-dropdown">
-                  <a class="navbar-item is-hoverable genre" data-id='28'> Action </a>
+                  <a class="navbar-item is-hoverable genre" data-id='1' data-name="Action">Action</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='12' > Adventure </a>
+                  <a class="navbar-item is-hoverable genre" data-id='2' data-name="Adventure">Adventure</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='16'> Animation </a>
+                  <a class="navbar-item is-hoverable genre" data-id='3' data-name="Animation">Animation</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='35'> Comedy </a>
+                  <a class="navbar-item is-hoverable genre" data-id='4' data-name="Comedy">Comedy</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='80'> Crime </a>
+                  <a class="navbar-item is-hoverable genre" data-id='5' data-name="Crime">Crime</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='18'> Drama </a>
+                  <a class="navbar-item is-hoverable genre" data-id='6' data-name="Documentary">Documentary</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='27'> Horror </a>
+                  <a class="navbar-item is-hoverable genre" data-id='7' data-name="Drama">Drama</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='10749'> Romance </a>
+                  <a class="navbar-item is-hoverable genre" data-id='11' data-name="Horror">Horror</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='878'> Science Fiction </a>
+                  <a class="navbar-item is-hoverable genre" data-id='14' data-name="Romance">Romance</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='53'> Thriller </a>
+                  <a class="navbar-item is-hoverable genre" data-id='15' data-name="Science Fiction">Science Fiction</a>
                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='99'> Documentary </a>
+                  <a class="navbar-item is-hoverable genre" data-id='17' data-name="Thriller">Thriller</a>
+                  
+                  
                 </div>
               </div>
             </div>
@@ -229,6 +231,6 @@
         autoplay: true,
       });
     </script>
-    <script src="./assets/script.js"></script>
+    <script src="./assets/scripts/script.js"></script>
   </body>
 </html>
