@@ -4,8 +4,9 @@ body {
 #background-image {
   background-image: url("/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
-  /* filter: blur(4px); */
-  /* height: 60vh; */
+  width: 100%;
+  filter: blur(4px);
+  height: 60vh;
 }
 .header-container {
   width: 100%;
