@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// Code required for the carousel to be able to move//
-=======
 // This fucntion controls the sliders
->>>>>>> b358d41ff1ce984b5905159f0dc1115bb0cb2b83
 var slideIndex = 1;
 showSlides(slideIndex);
 
