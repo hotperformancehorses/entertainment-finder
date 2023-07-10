@@ -47,6 +47,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+//// Function select specific genre
+let genreClass = document.querySelectorAll(".genre");
+genreClass.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    let currBtn = e.target;
+    currBtn.setAttribute(
+      "href",
+      `./search.html?genreId=${currBtn.dataset.id}&genreName=${currBtn.dataset.name}`
+    );
+  });
+});
+
+
 // Lily's API Key for TMDB
 var apiKeyTm = "d8456d6d5c57d78561ea4588cc7a1a54";
 
@@ -157,3 +171,4 @@ function getmovieApi() {
 
 getmovieApi();
 // getTVApi();
+
