@@ -15,12 +15,27 @@
     />
     <link rel="stylesheet" href="./assets/styles/style.css" />
   </head>
-  <body">
-    <div id="background-image" class="hero is-halfheight"></div>
+  <body>
+    <div id="background-image" class="hero is-halfheight">
+      <form>
+        <label for="search-input">Search</label>
+          <select id="queryParam">
+            <option value="movie">
+              Title
+            </option>
+            <option value="person">
+              Actor
+            </option>
+          </select>
+        <input type="text" id="search-input" placeholder="search" <input class="input is-large" type="text" placeholder="Large input"/>
+      </form>
+    </div>
     <div class="header-container">
-      <a id="logo">
+      
+      <a id="logo" href="./index.html">
         <img src="./assets/images/Streamly!-logos_white.png">
       </a>
+      
       <header id="header" class="is-flex is-flex-justify-content-space-evenly">
         <nav
           class="navbar is-dark"
@@ -77,19 +92,26 @@
                 </div>
               </div>
             </div>
+            
   
             <div class="navbar-end">
               <div class="navbar-item">
-                <form>
-                  <label for="search-input">Search</label>
-                  <input type="text" id="search-input" placeholder="search" />
-                </form>
+                <!-- <form> -->
+                  <!-- <label for="search-input">Search</label>
+                  <input type="text" id="search-input" placeholder="search" /> -->
+                <!-- </form> -->
               </div>
             </div>
           </div>
+          
         </nav>
       </header>
+      
     </div>
+</div>
+
+    
+  
     
     <main>
       <section>
@@ -216,6 +238,10 @@
           </div>
         </div>
       </section>
+   
+
+    
+
     </main>
 
     <!--SCRIPT TAGS-->
@@ -225,7 +251,7 @@
       bulmaCarousel.attach("#slider", {
         slidesToScroll: 1,
         slidesToShow: 5,
-        infinite: true,
+        loop: true,
         autoplay: true,
       });
     </script>
