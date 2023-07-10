@@ -5,6 +5,7 @@ let genreElement = document.getElementById("genreName");
 let category = ["movie", "tv"];
 let movieBtn = document.getElementById("movie-btn");
 let tvBtn = document.getElementById("tv-btn");
+let storedData = {};
 let demoData = [
   {
     adult: false,
@@ -347,11 +348,20 @@ let demoData = [
     vote_count: 2863,
   },
 ];
+showSearchCategory();
 
-function getbyGenre(search) {
-  let genreId = document.location.search.split("=")[1].split("&")[0];
+// Shows search category
+function showSearchCategory() {
   let genreName = document.location.search.split("&")[1].split("=")[1];
   genreElement.textContent = genreName;
+  searchResultByGenre = [];
+}
+
+// Gets the movie or tv data based on user's choice
+function getbyGenre(searchBy) {
+  let genreId = document.location.search.split("=")[1].split("&")[0];
+  cardHolder.setAttribute("data-show", `${searchBy}`);
+
   const options = {
     method: "GET",
     headers: {
@@ -362,27 +372,48 @@ function getbyGenre(search) {
   };
 
   fetch(
-    `https://api.themoviedb.org/3/discover/${search}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
+    `https://api.themoviedb.org/3/discover/${searchBy}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
     options
   )
     .then((response) => response.json())
     .then((response) => {
       let results = response.results;
+      searchResultByGenre = [...results];
       renderCards(results);
     })
     .catch((err) => console.error(err));
 }
 
 movieBtn.addEventListener("click", (e) => {
-  let search = e.target.dataset.name;
-  getbyGenre(search);
+  let searchBy = e.target.dataset.name;
+  if (
+    (cardHolder.children.length !== 0 &&
+      cardHolder.getAttribute("data-show") !== "movie") ||
+    cardHolder.children.length === 0
+  ) {
+    cardHolder.removeAttribute("data-show");
+    cardHolder.innerHTML = "";
+    getbyGenre(searchBy);
+  }
 });
 tvBtn.addEventListener("click", (e) => {
-  let search = e.target.dataset.name;
-  getbyGenre(search);
+  let searchBy = e.target.dataset.name;
+  if (
+    (cardHolder.children.length !== 0 &&
+      cardHolder.getAttribute("data-show") !== "tv") ||
+    cardHolder.children.length === 0
+  ) {
+    cardHolder.removeAttribute("data-show");
+    cardHolder.innerHTML = "";
+    getbyGenre(searchBy);
+  }
 });
 
+// Renders the card/tiles dynamically
 function renderCards(data) {
+  if (cardHolder.innerHTML) {
+    console.log("there is something");
+  }
   data.forEach((obj) => {
     let card = document.createElement("div");
     card.setAttribute("class", "card");
@@ -391,51 +422,26 @@ function renderCards(data) {
     card.appendChild(cardImage);
     let figure = document.createElement("figure");
     figure.setAttribute("class", "is-4by3");
+    let moreinfo = document.createElement("button");
+    moreinfo.innerText = "More Info";
+    moreinfo.setAttribute("id", "moreInfo");
+    moreinfo.setAttribute("class", "button");
+    let addToWatchlist = document.createElement("button");
+    addToWatchlist.setAttribute("id", "addToWatchlist");
+    addToWatchlist.setAttribute("class", "button");
+    addToWatchlist.innerText = "Add to Watchlist";
+    figure.appendChild(moreinfo);
+    figure.appendChild(addToWatchlist);
     cardImage.appendChild(figure);
     let img = document.createElement("img");
     img.setAttribute(
       "src",
       `https://image.tmdb.org/t/p/w300${obj.poster_path}`
     );
-    img.setAttribute("")
+    img.setAttribute("alt", `${obj.original_title}`);
     figure.appendChild(img);
     cardHolder.appendChild(card);
   });
 }
 
-renderCards(demoData);
-
-// let promise1 = Promise.resolve(12);
-// let promise2 = Promise.resolve(30);
-// let promise3 = new Promise((resolve, reject) => {
-//   setTimeout(resolve, 3000, 1000);
-// });
-// console.log("resolving promise");
-// Promise.resolve("resolving first promise")
-//   .then((data) => {
-//     console.log(data);
-//     let fetch_calls = []
-//     data["titles"].forEach((obj) => {
-//       let pr = fetch('url')
-//       fetch_calls.push(pr)
-//     })
-//     //return Promise.all([promise1, promise2, promise3]);
-//     return Promise.all(fetch_calls)
-//   })
-//   .then((data) => {
-//     console.log(`promise all returned ${data}`);
-//   });
-
-// Async demo
-
-// async function x() {
-//   data = [];
-//   list = await fetch("");
-//   list.forEach(async (data) => {
-//     let y = await fetch();
-//     data.push(y);
-//   });
-//   return data;
-// }
-
-// let my_data = await x();
+// renderCards(demoData);
