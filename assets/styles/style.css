@@ -2,7 +2,7 @@ body {
   position: relative;
 }
 #background-image {
-  background-image: url(/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg);
+  background-image: url("./images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
   filter: blur(4px);
   height: 60vh;
@@ -67,6 +67,7 @@ li {
 a {
   color: white;
 }
+<<<<<<< HEAD:assets/style.css
 #background-image {
   background-image: url(/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg);
   background-size: cover;
@@ -78,3 +79,9 @@ a {
   position: absolute;
   top: 2em;
 }
+
+#slider { 
+}
+=======
+
+>>>>>>> 224bee3c11c1a38b27c78b418d53a04e298ada1e:assets/styles/style.css
