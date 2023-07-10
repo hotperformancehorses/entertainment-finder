@@ -1,5 +1,5 @@
 #background-image {
-  background-image: url(/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg);
+  background-image: url("../images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
   filter: blur(6px);
   height: 60vh;
@@ -19,3 +19,18 @@
   color: #fff;
   box-shadow: 1px 2px 5px grey;
 }
+
+main {
+  position: absolute;
+  z-index: 2;
+  top: 10em;
+}
+/* #card-container {
+  height: fit-content;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+#card-container .card {
+  margin: 2em;
+} */

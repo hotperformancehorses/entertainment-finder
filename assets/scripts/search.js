@@ -2,6 +2,9 @@
 let cardHolder = document.getElementById("card-container");
 let searchResultByGenre = [];
 let genreElement = document.getElementById("genreName");
+let category = ["movie", "tv"];
+let movieBtn = document.getElementById("movie-btn");
+let tvBtn = document.getElementById("tv-btn");
 let demoData = [
   {
     adult: false,
@@ -345,11 +348,10 @@ let demoData = [
   },
 ];
 
-function getbyGenre() {
+function getbyGenre(search) {
   let genreId = document.location.search.split("=")[1].split("&")[0];
   let genreName = document.location.search.split("&")[1].split("=")[1];
   genreElement.textContent = genreName;
-
   const options = {
     method: "GET",
     headers: {
@@ -360,50 +362,48 @@ function getbyGenre() {
   };
 
   fetch(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
+    `https://api.themoviedb.org/3/discover/${search}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
     options
   )
     .then((response) => response.json())
-    .then((response) => console.log(response))
+    .then((response) => {
+      let results = response.results;
+      renderCards(results);
+    })
     .catch((err) => console.error(err));
 }
-// getbyGenre();
 
-function renderCards() {
-  demoData.forEach((obj) => {
+movieBtn.addEventListener("click", (e) => {
+  let search = e.target.dataset.name;
+  getbyGenre(search);
+});
+tvBtn.addEventListener("click", (e) => {
+  let search = e.target.dataset.name;
+  getbyGenre(search);
+});
+
+function renderCards(data) {
+  data.forEach((obj) => {
     let card = document.createElement("div");
     card.setAttribute("class", "card");
+    let cardImage = document.createElement("div");
+    cardImage.setAttribute("class", "card-image");
+    card.appendChild(cardImage);
     let figure = document.createElement("figure");
-    figure.appendChild(card);
+    figure.setAttribute("class", "is-4by3");
+    cardImage.appendChild(figure);
     let img = document.createElement("img");
-    img.setAttribute("src", `${obj.poster_path}`);
+    img.setAttribute(
+      "src",
+      `https://image.tmdb.org/t/p/w300${obj.poster_path}`
+    );
+    img.setAttribute("")
+    figure.appendChild(img);
+    cardHolder.appendChild(card);
   });
 }
 
-// async function createSearchList() {
-//   let listOfIds = await getGenreList();
-//   listOfIds.forEach(async (id)=>{
-//     let response = await fetch()
-//   })
-// }
-
-// getListByGenreId();
-
-// renderSearchToPage(searchResultByGenre);
-
-// function renderSearchToPage(array) {
-//   if (array.length !== 0) {
-//     array.forEach((el) => {
-//       // let card = document.createElement("div");
-//       // let figure = document.createElement("figure");
-//       // let img = document.createElement("img");
-//       console.log(el.poster);
-//       // cardHolder.append(card);
-//     });
-//   }
-// }
-
-// Promise all demo
+renderCards(demoData);
 
 // let promise1 = Promise.resolve(12);
 // let promise2 = Promise.resolve(30);
