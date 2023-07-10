@@ -2,10 +2,10 @@ body {
   position: relative;
 }
 #background-image {
-  background-image: url("//assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
+  background-image: url("/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
-  filter: blur(4px);
-  height: 60vh;
+  /* filter: blur(4px); */
+  /* height: 60vh; */
 }
 .header-container {
   width: 100%;
