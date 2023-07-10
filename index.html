@@ -15,187 +15,192 @@
     />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
-  <body>
-    <div id="background-image"></div>
-    <div id="sub-body">
-      <header class="container is-flex is-justify-content-space-evenly">
+  <body">
+    <div id="background-image" class="hero is-halfheight"></div>
+    <div class="header-container">
+      <a id="logo">
+        <img src="./assets/images/Streamly!-logos_white.png">
+      </a>
+      <header id="header" class="is-flex is-flex-justify-content-space-evenly">
         <nav
-          class="is-flex is-flex-direction-row is-justify-content-space-evenly is-align-content-center"
+          class="navbar is-dark"
+          role="navigation"
+          aria-label="main navigation"
         >
-          <span id="logo-container">
+          <div class="navbar-brand">
             <a
-              ><img
-                src="./assets/images/Streamly!-logos_white.png"
-                alt="logo" /></a
-          ></span>
-          <ul
-            class="is-flex is-flex-direction-row is-justify-content-space-around"
-          >
-            <li class="nav-item"><a>Home</a></li>
-            <li class="nav-item"><a>About</a></li>
-            <li class="nav-item"><a>New</a></li>
-            <li class="nav-item"><a>Watchlist</a></li>
-            <li class="nav-item"><a>Polpular</a></li>
-          </ul>
-          <div>
-            <form>
-              <label for="search-input">Search</label>
-              <input type="text" id="search-input" placeholder="search" />
-            </form>
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
-        </nav>
-      </header>
-      <main>
-        <section>
-          <div id="slider">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1200x500"
-                    alt=""
-                  />
-                </figure>
-              </div>
-              <div class="card-content slider-text">
-                <div class="is-size-5 box">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Accusantium cum blanditiis dolore aperiam reiciendis minima
-                  doloremque recusandae atque illum. Dolorum impedit aut facere,
-                  porro minus quia dignissimos minima. Iure, magni?
+  
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item"> Home </a>
+  
+              <a class="navbar-item"> Documentation </a>
+  
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"> More </a>
+  
+                <div class="navbar-dropdown">
+                  <a class="navbar-item is-hoverable"> About </a>
+                  <hr class="navbar-divider" />
+                  <a class="navbar-item is-hoverable"> Jobs </a>
+                  <hr class="navbar-divider" />
+                  <a class="navbar-item is-hoverable"> Contact </a>
+                  <hr class="navbar-divider" />
+                  <a class="navbar-item is-hoverable"> Report an issue </a>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1200x500"
-                    alt=""
-                  />
-                </figure>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque facere inventore voluptate ad, ipsam, esse asperiores
-                  distinctio ipsum reprehenderit nostrum veniam debitis
-                  perferendis vero repellat earum commodi quaerat qui excepturi.
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <p class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1300x500"
-                    alt=""
-                  />
-                </p>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Ipsam magni sint exercitationem libero nesciunt quo saepe,
-                  voluptates eaque. Iure itaque quam facere sit praesentium
-                  minus deserunt tenetur nemo assumenda asperiores?
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <p class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1300x500"
-                    alt=""
-                  />
-                </p>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Ipsam magni sint exercitationem libero nesciunt quo saepe,
-                  voluptates eaque. Iure itaque quam facere sit praesentium
-                  minus deserunt tenetur nemo assumenda asperiores?
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <p class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1300x500"
-                    alt=""
-                  />
-                </p>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Ipsam magni sint exercitationem libero nesciunt quo saepe,
-                  voluptates eaque. Iure itaque quam facere sit praesentium
-                  minus deserunt tenetur nemo assumenda asperiores?
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <p class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1300x500"
-                    alt=""
-                  />
-                </p>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Ipsam magni sint exercitationem libero nesciunt quo saepe,
-                  voluptates eaque. Iure itaque quam facere sit praesentium
-                  minus deserunt tenetur nemo assumenda asperiores?
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <p class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1300x500"
-                    alt=""
-                  />
-                </p>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Ipsam magni sint exercitationem libero nesciunt quo saepe,
-                  voluptates eaque. Iure itaque quam facere sit praesentium
-                  minus deserunt tenetur nemo assumenda asperiores?
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <p class="image is-16by9 is-covered">
-                  <img
-                    src="https://source.unsplash.com/random/1300x500"
-                    alt=""
-                  />
-                </p>
-              </div>
-              <div class="card-content slider-text">
-                <p class="is-size-5 box">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Ipsam magni sint exercitationem libero nesciunt quo saepe,
-                  voluptates eaque. Iure itaque quam facere sit praesentium
-                  minus deserunt tenetur nemo assumenda asperiores?
-                </p>
+  
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <form>
+                  <label for="search-input">Search</label>
+                  <input type="text" id="search-input" placeholder="search" />
+                </form>
               </div>
             </div>
           </div>
-        </section>
-      </main>
+        </nav>
+      </header>
     </div>
+    
+    <main>
+      <section>
+        <div id="slider">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-16by9 is-covered">
+                <img src="https://source.unsplash.com/random/1200x500" alt="" />
+              </figure>
+            </div>
+            <div class="card-content slider-text">
+              <!-- <div class="is-size-5 box">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Accusantium cum blanditiis dolore aperiam reiciendis minima
+                doloremque recusandae atque illum. Dolorum impedit aut facere,
+                porro minus quia dignissimos minima. Iure, magni?
+              </div> -->
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-16by9 is-covered">
+                <img src="https://source.unsplash.com/random/1200x500" alt="" />
+              </figure>
+            </div>
+            <!-- <div class="card-content slider-text">
+              <p class="is-size-5 box">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+                facere inventore voluptate ad, ipsam, esse asperiores distinctio
+                ipsum reprehenderit nostrum veniam debitis perferendis vero
+                repellat earum commodi quaerat qui excepturi.
+              </p>
+            </div> -->
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <p class="image is-16by9 is-covered">
+                <img src="https://source.unsplash.com/random/1300x500" alt="" />
+              </p>
+            </div>
+            <!-- <div class="card-content slider-text">
+              <p class="is-size-5 box">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam
+                magni sint exercitationem libero nesciunt quo saepe, voluptates
+                eaque. Iure itaque quam facere sit praesentium minus deserunt
+                tenetur nemo assumenda asperiores?
+              </p>
+            </div> -->
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <p class="image is-16by9 is-covered">
+                <img src="https://source.unsplash.com/random/1300x500" alt="" />
+              </p>
+            </div>
+            <!-- <div class="card-content slider-text">
+              <p class="is-size-5 box">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam
+                magni sint exercitationem libero nesciunt quo saepe, voluptates
+                eaque. Iure itaque quam facere sit praesentium minus deserunt
+                tenetur nemo assumenda asperiores?
+              </p>
+            </div> -->
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <p class="image is-16by9 is-covered">
+                <img src="https://source.unsplash.com/random/1300x500" alt="" />
+              </p>
+            </div>
+            <!-- <div class="card-content slider-text">
+              <p class="is-size-5 box">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam
+                magni sint exercitationem libero nesciunt quo saepe, voluptates
+                eaque. Iure itaque quam facere sit praesentium minus deserunt
+                tenetur nemo assumenda asperiores?
+              </p>
+            </div> -->
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <p class="image is-16by9 is-covered">
+                <img src="https://source.unsplash.com/random/1300x500" alt="" />
+              </p>
+            </div>
+            <!-- <div class="card-content slider-text">
+              <p class="is-size-5 box">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam
+                magni sint exercitationem libero nesciunt quo saepe, voluptates
+                eaque. Iure itaque quam facere sit praesentium minus deserunt
+                tenetur nemo assumenda asperiores?
+              </p>
+            </div> -->
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <p class="image is-16by9 is-covered">
+                <img src="https://source.unsplash.com/random/1300x500" alt="" />
+              </p>
+            </div>
+            <!-- <div class="card-content slider-text">
+              <p class="is-size-5 box">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam
+                magni sint exercitationem libero nesciunt quo saepe, voluptates
+                eaque. Iure itaque quam facere sit praesentium minus deserunt
+                tenetur nemo assumenda asperiores?
+              </p>
+            </div> -->
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <p class="image is-16by9 is-covered">
+                <img src="https://source.unsplash.com/random/1300x500" alt="" />
+              </p>
+            </div>
+            <!-- <div class="card-content slider-text">
+              <p class="is-size-5 box">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam
+                magni sint exercitationem libero nesciunt quo saepe, voluptates
+                eaque. Iure itaque quam facere sit praesentium minus deserunt
+                tenetur nemo assumenda asperiores?
+              </p>
+            </div> -->
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!--SCRIPT TAGS-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -203,7 +208,11 @@
     <script>
       bulmaCarousel.attach("#slider", {
         slidesToScroll: 1,
+<<<<<<< HEAD
         slidesToShow: 2,
+=======
+        slidesToShow: 5,
+>>>>>>> b358d41ff1ce984b5905159f0dc1115bb0cb2b83
         infinite: true,
         autoplay: true,
         autoplaySpeed: 200
