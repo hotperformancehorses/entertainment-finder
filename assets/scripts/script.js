@@ -79,6 +79,7 @@ var movieSix = document.querySelector("#movie-6");
 var movieSeven = document.querySelector("#movie-7");
 var movieEight = document.querySelector("#movie-8");
 
+
 function renderMovie(data) {
   const img1 = document.createElement("img");
   img1.src = "https://image.tmdb.org/t/p/w300" + data.results[0].poster_path;
@@ -138,6 +139,7 @@ function getmovieApi() {
     });
 }
 
+
 // function renderTV(data) {
 //   console.log(data)
 //   for (var i=0; i < 5; i++) {
@@ -146,18 +148,21 @@ function getmovieApi() {
 //   }
 // }
 
-// function getTVApi() {
-//   fetch(tvUrl)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       renderTV(data);
-//     })
-//     .catch(function (error) {
-//       console.log("Requestfailed", error);
-//     })
-// }
 
-// getmovieApi();
-// getTVApi();
+function getTVApi() {
+  fetch(tvUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      renderTV(data);
+    })
+    .catch(function (error) {
+      console.log("Requestfailed", error);
+    })
+}
+
+
+
+getmovieApi();
+getTVApi();
