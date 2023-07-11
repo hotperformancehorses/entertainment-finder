@@ -3,7 +3,7 @@ body {
   position: relative;
 }
 #background-image {
-  background-image: url("./images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
+  background-image: url("../images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
   filter: blur(4px);
   height: 60vh;
@@ -90,5 +90,12 @@ nav {
 
 .caption-container {
   color: white;
+}
+
+#movie-title, #tv-title {
+  font-family: 'Lilita One', cursive;
+  font-weight: bolder;
+  font-size: 30px;
+  margin-left: 10px;;
 }
 
