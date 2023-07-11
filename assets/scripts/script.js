@@ -90,43 +90,61 @@ var tvSix= document.querySelector("#tv-6");
 var tvSeven= document.querySelector("#tv-7");
 var tvEight= document.querySelector("#tv-8");
 
-
+var sliderParent = document.querySelector("#slider")
 
 function renderMovie(data) {
-
+console.log(data)
 const img1= document.createElement("img");
-img1.src= "https://image.tmdb.org/t/p/w300" + data.results[0].poster_path;;
+img1.src= "https://image.tmdb.org/t/p/w300" + data.results[0].poster_path;
+img1.setAttribute("data-title",data.results[0].original_title)
 movieOne.append(img1);
 
 const img2= document.createElement("img");
 img2.src= "https://image.tmdb.org/t/p/w300" + data.results[1].poster_path;
+img2.setAttribute("data-title",data.results[1].original_title)
 movieTwo.append(img2);
 
 const img3= document.createElement("img");
 img3.src= movie3= "https://image.tmdb.org/t/p/w300" + data.results[2].poster_path;
+img3.setAttribute("data-title",data.results[2].original_title)
 movieThree.append(img3);
 
 const img4= document.createElement("img");
 img4.src= "https://image.tmdb.org/t/p/w300" + data.results[3].poster_path;
+img4.setAttribute("data-title",data.results[3].original_title)
 movieFour.append(img4);
 
 const img5= document.createElement("img");
 img5.src= "https://image.tmdb.org/t/p/w300" + data.results[4].poster_path;
+img5.setAttribute("data-title",data.results[4].original_title)
 movieFive.append(img5);
 
 const img6= document.createElement("img");
 img6.src= "https://image.tmdb.org/t/p/w300" + data.results[5].poster_path;
+img6.setAttribute("data-title",data.results[5].original_title)
 movieSix.append(img6);
 
 const img7= document.createElement("img");
 img7.src= "https://image.tmdb.org/t/p/w300" + data.results[6].poster_path;
+img7.setAttribute("data-title",data.results[6].original_title)
 movieSeven.append(img7);
 
 const img8= document.createElement("img");
 img8.src= "https://image.tmdb.org/t/p/w300" + data.results[7].poster_path;
+img8.setAttribute("data-title",data.results[7].original_title)
 movieEight.append(img8);
 
 }
+
+sliderParent.addEventListener("click",function(event){
+ 
+  if (event.target.matches("img"))
+  {
+    console.log(event.target.getAttribute("data-title"))
+    var movieTitle = event.target.getAttribute("data-title")
+    location.assign("./search.html?"+"q=movie&input="+movieTitle)
+  }
+})
 
 
 // function renderMovie(data) {
