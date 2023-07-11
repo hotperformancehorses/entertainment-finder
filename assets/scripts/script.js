@@ -81,6 +81,16 @@ var movieSix= document.querySelector("#movie-6");
 var movieSeven= document.querySelector("#movie-7");
 var movieEight= document.querySelector("#movie-8");
 
+var tvOne= document.querySelector("#tv-1");
+var tvTwo= document.querySelector("#tv-2");
+var tvThree= document.querySelector("#tv-3");
+var tvFour= document.querySelector("#tv-4");
+var tvFive= document.querySelector("#tv-5");
+var tvSix= document.querySelector("#tv-6");
+var tvSeven= document.querySelector("#tv-7");
+var tvEight= document.querySelector("#tv-8");
+
+
 
 function renderMovie(data) {
 
@@ -326,6 +336,40 @@ var demodata = [
 
 
 
+function renderTV(data) {
+const teleimg1= document.createElement("img");
+teleimg1.src= "https://image.tmdb.org/t/p/w300" + data.results[0].poster_path;;
+tvOne.append(teleimg1);
+
+const teleimg2= document.createElement("img");
+teleimg2.src= "https://image.tmdb.org/t/p/w300" + data.results[1].poster_path;;
+tvTwo.append(teleimg2);
+
+const teleimg3= document.createElement("img");
+teleimg3.src= "https://image.tmdb.org/t/p/w300" + data.results[2].poster_path;;
+tvThree.append(teleimg3);
+
+const teleimg4= document.createElement("img");
+teleimg4.src= "https://image.tmdb.org/t/p/w300" + data.results[3].poster_path;;
+tvFour.append(teleimg4);
+
+const teleimg5= document.createElement("img");
+teleimg5.src= "https://image.tmdb.org/t/p/w300" + data.results[4].poster_path;;
+tvFive.append(teleimg5);
+
+const teleimg6= document.createElement("img");
+teleimg6.src= "https://image.tmdb.org/t/p/w300" + data.results[5].poster_path;;
+tvSix.append(teleimg6);
+
+const teleimg7= document.createElement("img");
+teleimg7.src= "https://image.tmdb.org/t/p/w300" + data.results[6].poster_path;;
+tvSeven.append(teleimg7);
+
+const teleimg8= document.createElement("img");
+teleimg8.src= "https://image.tmdb.org/t/p/w300" + data.results[7].poster_path;;
+tvEight.append(teleimg8);
+}
+
 
 // function renderTV(data) {
 //   console.log(data)
@@ -335,21 +379,22 @@ var demodata = [
 //   }
 // }
 
-// function getTVApi() {
-//   fetch(tvUrl)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       renderTV(data);
-//     })
-//     .catch(function (error) {
-//       console.log("Requestfailed", error);
-//     })
-// }
+
+function getTVApi() {
+  fetch(tvUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      renderTV(data);
+    })
+    .catch(function (error) {
+      console.log("Requestfailed", error);
+    })
+}
 
 
 
 getmovieApi();
-//   
+getTVApi();
 
