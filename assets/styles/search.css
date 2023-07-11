@@ -38,11 +38,19 @@ figure {
   flex-direction: column-reverse;
 }
 figure button {
-  margin: 0.25em 0;
+  margin: 0 auto;
+  margin-top: 0.3em;
+  width: 80%;
 }
 .card {
   margin: 1em;
   background-color: hsl(0, 0%, 21%);
+}
+.card img {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 0.3em;
+  box-shadow: 3px 2px 9px grey;
 }
 #logo {
   width: 8em;

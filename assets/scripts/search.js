@@ -348,7 +348,8 @@ let demoData = [
     vote_count: 2863,
   },
 ];
-showSearchCategory();
+
+showSearchCategory(); // called on page load
 
 // Shows search category
 function showSearchCategory() {
@@ -378,12 +379,17 @@ function getbyGenre(searchBy) {
     .then((response) => response.json())
     .then((response) => {
       let results = response.results;
-      searchResultByGenre = [...results];
-      renderCards(results);
+      if (results.length !== 0) {
+        searchResultByGenre = [...results];
+        renderCards(results, searchBy);
+      } else {
+        genreElement.textContent = "Not Found";
+      }
     })
     .catch((err) => console.error(err));
 }
 
+//Click events
 movieBtn.addEventListener("click", (e) => {
   let searchBy = e.target.dataset.name;
   if (
@@ -410,13 +416,14 @@ tvBtn.addEventListener("click", (e) => {
 });
 
 // Renders the card/tiles dynamically
-function renderCards(data) {
+function renderCards(data, category) {
   if (cardHolder.innerHTML) {
     console.log("there is something");
   }
   data.forEach((obj) => {
     let card = document.createElement("div");
     card.setAttribute("class", "card");
+    card.setAttribute("data-id", `${category}-${obj.id}`);
     let cardImage = document.createElement("div");
     cardImage.setAttribute("class", "card-image");
     card.appendChild(cardImage);
@@ -426,12 +433,15 @@ function renderCards(data) {
     moreinfo.innerText = "More Info";
     moreinfo.setAttribute("id", "moreInfo");
     moreinfo.setAttribute("class", "button");
-    let addToWatchlist = document.createElement("button");
-    addToWatchlist.setAttribute("id", "addToWatchlist");
-    addToWatchlist.setAttribute("class", "button");
-    addToWatchlist.innerText = "Add to Watchlist";
+    let addToWatch = document.createElement("button");
+    addToWatch.setAttribute("id", "addToWatch");
+    addToWatch.setAttribute("class", "button");
+    addToWatch.addEventListener("click", (e) => {
+      addToWatchList(e, obj);
+    });
+    addToWatch.innerText = "Add to Watchlist";
     figure.appendChild(moreinfo);
-    figure.appendChild(addToWatchlist);
+    figure.appendChild(addToWatch);
     cardImage.appendChild(figure);
     let img = document.createElement("img");
     img.setAttribute(
@@ -445,3 +455,14 @@ function renderCards(data) {
 }
 
 // renderCards(demoData);
+
+//Function to store on localStorage
+function addToWatchList(e, obj) {
+  let id = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
+  let val = obj;
+  storedData[id] = val;
+  let tempdata = JSON.stringify(storedData);
+  localStorage.setItem("movieData", tempdata);
+}
+
+// 'https://api.watchmode.com/v1/title/345534/details/?apiKey=YOUR_API_KEY&append_to_response=sources'
