@@ -46,8 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
 //// Function select specific genre
 let genreClass = document.querySelectorAll(".genre");
 genreClass.forEach((el) => {
@@ -60,7 +58,6 @@ genreClass.forEach((el) => {
   });
 });
 
-
 // Lily's API Key for TMDB
 var apiKeyTm = "d8456d6d5c57d78561ea4588cc7a1a54";
 
@@ -68,7 +65,8 @@ var apiKeyTm = "d8456d6d5c57d78561ea4588cc7a1a54";
 var tvUrl = "https://api.themoviedb.org/3/trending/tv/week?api_key=" + apiKeyTm;
 console.log(tvUrl);
 
-var movieUrl = "https://api.themoviedb.org/3/trending/movie/week?api_key=" + apiKeyTm;
+var movieUrl =
+  "https://api.themoviedb.org/3/trending/movie/week?api_key=" + apiKeyTm;
 console.log(movieUrl);
 
 var cardImage= document.querySelector(".card-image");
@@ -157,8 +155,6 @@ sliderParent.addEventListener("click",function(event){
 //   }
 
 // }
-
-
 
 function getmovieApi() {
   fetch(movieUrl)
@@ -431,4 +427,3 @@ function getTVApi() {
 
 getmovieApi();
 getTVApi();
-
