@@ -55,3 +55,11 @@ figure button {
 #logo {
   width: 8em;
 }
+.icon {
+  width: 2em;
+  height: fit-content;
+}
+.iconColumn {
+  display: flex;
+  justify-content: space-evenly;
+}
