@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css"
+      integrity="sha256-7jUS+MWeqkFdmW9ozkZ7mPagz+QmMbsBlt+Q3MsE+FU="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./assets/styles/search.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="background-image" class="hero is-fullheight"></div>
+
+    <div class="header-container">
+      <a id="logo">
+        <img src="./assets/images/Streamly!-logos_white.png" />
+      </a>
+      <header id="header" class="is-flex is-flex-justify-content-space-evenly">
+        <nav
+          class="navbar is-dark"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div class="navbar-brand">
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item" href="./index.html">Popular Movies</a>
+
+              <a class="navbar-item" href="./index.html">Popular Tv Shows</a>
+
+              <a class="navbar-item" href="./index.html">Watchlist</a>
+
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link"> Genres </a>
+                <!-- Data ids represents genre id's on api.watchmode/v1/genre -->
+                <div class="navbar-dropdown">
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="28"
+                    data-name="Action"
+                    >Action</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="12"
+                    data-name="Adventure"
+                    >Adventure</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="16"
+                    data-name="Animation"
+                    >Animation</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="35"
+                    data-name="Comedy"
+                    >Comedy</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="80"
+                    data-name="Crime"
+                    >Crime</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="18"
+                    data-name="Drama"
+                    >Drama</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="27"
+                    data-name="Horror"
+                    >Horror</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="10749"
+                    data-name="Romance"
+                    >Romance</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="878"
+                    data-name="ScienceFiction"
+                    >Science Fiction</a
+                  >
+                  <hr class="navbar-divider" />
+                  <a
+                    class="navbar-item is-hoverable genre"
+                    data-id="53"
+                    data-name="Thriller"
+                    >Thriller</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <form>
+                  <label for="search-input">Search</label>
+                  <input type="text" id="search-input" placeholder="search" />
+                </form>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </div>
+
+    <div id="heading">
+      <h1 class="title">
+        Showing search for: <span id="genreName" class=""></span>
+      </h1>
+      <div>
+        <button class="button" id="movie-btn" data-name="movie">Movies</button>
+        <button class="button" id="tv-btn" data-name="tv">TV Shows</button>
+      </div>
+    </div>
+    <main>
+      <div class="tile ia-ancestor" id="card-container"></div>
+      <div class="card">
+        <div class="">
+          <figure class="image is-100x100">
+            <img src="" alt="" id="resultsPoster">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+            </div>
+            <div class="media-content">
+              <p class="title is-4"id="resultsTitle"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="card-container"></div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"
+      integrity="sha256-2Dbg51yxfa7qZ8CSKqsNxHtph8UHdgbzxXF9ANtyJHo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/scripts/script.js"></script>
+    <script src="./assets/scripts/search.js"></script>
+  </body>
+</html>

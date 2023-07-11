@@ -1,0 +1,82 @@
+#background-image {
+  background-image: url("../images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
+  background-size: cover;
+  /* filter: blur(6px); */
+  height: 60vh;
+}
+.header-container {
+  width: 100%;
+  z-index: 5;
+  position: absolute;
+  top: 2em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#heading {
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  top: 10em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #fff;
+}
+.title {
+  color: #fff;
+}
+main {
+  background-color: hsl(0, 0%, 21%);
+  position: absolute;
+  z-index: 2;
+  top: 25em;
+}
+#card-container {
+  height: fit-content;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+figure {
+  display: flex;
+  flex-direction: column-reverse;
+}
+figure button {
+  margin: 0 auto;
+  margin-top: 0.3em;
+  width: 80%;
+}
+.card {
+  margin: 1em;
+  background-color: hsl(0, 0%, 21%);
+}
+.card img {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 0.3em;
+  box-shadow: 3px 2px 9px grey;
+}
+#logo {
+  width: 8em;
+}
+.icon {
+  width: 2em;
+  height: fit-content;
+}
+.iconColumn {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#resultsPoster
+{
+  height: 300px;
+  width: 200px;
+  justify-content: center;
+  
+}
