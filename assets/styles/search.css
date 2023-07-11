@@ -35,7 +35,7 @@ main {
   z-index: 2;
   top: 25em;
 }
-#card-container {
+#tile-container {
   height: fit-content;
   /* border: 1px solid red; */
   display: flex;
@@ -73,10 +73,8 @@ figure button {
   justify-content: space-evenly;
 }
 
-#resultsPoster
-{
+#resultsPoster {
   height: 300px;
   width: 200px;
   justify-content: center;
-  
 }

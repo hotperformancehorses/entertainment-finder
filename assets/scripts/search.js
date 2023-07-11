@@ -1,6 +1,6 @@
 // const api_key_sucheta_watchmode = "GuNGDaJ1Dqvw6nIrD3bG9dc6LAb0Rjs4YjZUe9Lt"; limit exceeded.
 // const api_key_su = "PByuLqDSSGFYSHuu6g1O8FVZGP6tCXRz583czW24";
-let cardHolder = document.getElementById("card-container");
+let cardHolder = document.getElementById("tile-container");
 let searchResultByGenre = [];
 let genreElement = document.getElementById("genreName");
 let category = ["movie", "tv"];
@@ -34,12 +34,11 @@ function showSearchCategory() {
   genreElement.textContent = genreName;
   searchResultByGenre = [];
 }
+
+// Shows search results
 function displaySearch() {
   var query = document.location.search.split("=")[1].split("&")[0];
   var userInput = document.location.search.split("=")[2];
-  // console.log(query)
-  // console.log(userInput)
-
   const options = {
     method: "GET",
     headers: {
@@ -78,39 +77,35 @@ function displaySearch() {
 }
 displaySearch();
 
-function getbyGenre() {
+// Gets the movie or tv data based on user's choice
+function getbyGenre(searchBy) {
   let genreId = document.location.search.split("=")[1].split("&")[0];
+  cardHolder.setAttribute("data-show", `${searchBy}`);
 
-  // Gets the movie or tv data based on user's choice
-  function getbyGenre(searchBy) {
-    let genreId = document.location.search.split("=")[1].split("&")[0];
-    cardHolder.setAttribute("data-show", `${searchBy}`);
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjdlOTcyOWNhNzA5ZjRiNzE1NmJlZjNkMGI5ZDYwZCIsInN1YiI6IjY0YTgyMTM1OTU3ZTZkMDEzOWNmYzUxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yf03KF5yK3_pSaqifJRp2-tzgrrsvlPYENFI3cqpaWQ",
+    },
+  };
 
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjdlOTcyOWNhNzA5ZjRiNzE1NmJlZjNkMGI5ZDYwZCIsInN1YiI6IjY0YTgyMTM1OTU3ZTZkMDEzOWNmYzUxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yf03KF5yK3_pSaqifJRp2-tzgrrsvlPYENFI3cqpaWQ",
-      },
-    };
-
-    fetch(
-      `https://api.themoviedb.org/3/discover/${searchBy}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        let results = response.results;
-        if (results.length !== 0) {
-          searchResultByGenre = [...results];
-          renderCards(results, searchBy);
-        } else {
-          genreElement.textContent = "Not Found";
-        }
-      })
-      .catch((err) => console.error(err));
-  }
+  fetch(
+    `https://api.themoviedb.org/3/discover/${searchBy}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
+    options
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      let results = response.results;
+      if (results.length !== 0) {
+        searchResultByGenre = [...results];
+        renderCards(results, searchBy);
+      } else {
+        genreElement.textContent = "Not Found";
+      }
+    })
+    .catch((err) => console.error(err));
 }
 
 //Click events
@@ -155,7 +150,7 @@ function renderCards(data, category) {
     moreinfo.setAttribute("id", "moreInfo");
     moreinfo.setAttribute("class", "button");
     moreinfo.addEventListener("click", (e) => {
-      openTitleData(e, obj);
+      openTitleData(e, obj, category);
     });
     let addToWatch = document.createElement("button");
     addToWatch.setAttribute("id", "addToWatch");
@@ -178,8 +173,6 @@ function renderCards(data, category) {
   });
 }
 
-// renderCards(demoData);
-
 //Function to store on localStorage
 function addToWatchList(e, obj) {
   let id = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
@@ -190,7 +183,7 @@ function addToWatchList(e, obj) {
 }
 
 // 'https://api.watchmode.com/v1/title/345534/details/?apiKey=YOUR_API_KEY&append_to_response=sources'
-function openTitleData(e, obj) {
+function openTitleData(e, obj, category) {
   console.log(obj);
   let streaming = []; // to store the response from the fetch call
   let id = e.target.parentNode.parentNode.parentNode
@@ -206,7 +199,10 @@ function openTitleData(e, obj) {
     },
   };
 
-  fetch(`https://api.themoviedb.org/3/movie/${id}/watch/providers`, options)
+  fetch(
+    `https://api.themoviedb.org/3/${category}/${id}/watch/providers`,
+    options
+  )
     .then((response) => response.json())
     .then((response) => {
       let results = response.results["US"];
@@ -227,7 +223,13 @@ function openTitleData(e, obj) {
           providers.appendChild(iconTile);
         });
         Swal.fire({
-          title: `${obj.original_name}`,
+          title: `${
+            "original_title" in obj
+              ? obj.original_title
+              : "original_name" in obj
+              ? obj.original_name
+              : ""
+          }`,
           imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
           imageWidth: 400,
           imageHeight: 200,
@@ -237,7 +239,13 @@ function openTitleData(e, obj) {
         });
       } else {
         Swal.fire({
-          title: `${obj.original_name}`,
+          title: `${
+            "original_title" in obj
+              ? obj.original_title
+              : "original_name" in obj
+              ? obj.original_name
+              : ""
+          }`,
           text: `${obj.overview}`,
           imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
           imageWidth: 400,
@@ -247,8 +255,15 @@ function openTitleData(e, obj) {
       }
     })
     .catch((err) => {
+      console.log(obj);
       Swal.fire({
-        title: `${obj.original_name}`,
+        title: `${
+          "original_title" in obj
+            ? obj.original_title
+            : "original_name" in obj
+            ? obj.original_name
+            : ""
+        }`,
         text: `${obj.overview}`,
         imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
         imageWidth: 400,
@@ -257,4 +272,8 @@ function openTitleData(e, obj) {
       });
       console.error(err);
     });
+}
+
+function showWatchlist() {
+  storedData = {};
 }
