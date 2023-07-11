@@ -5,7 +5,7 @@ body {
   background-image: url("../images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
   width: 100%;
-  filter: blur(4px);
+  /* filter: blur(4px); */
   /* height: 60vh; */
 }
 .header-container {
@@ -68,6 +68,13 @@ li {
 a {
   color: white;
 }
+form
+{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+};
 
 .testing {
   width: 284px;

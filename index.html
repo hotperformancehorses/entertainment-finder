@@ -14,9 +14,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
   <link rel="stylesheet" href="./assets/styles/style.css" />
 </head>
-<body">
-  <div class="hero is-fullheight">
-    <img id="background-image" src="./assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg">
+
+<body>
+  <div id="background-image" class="hero is-halfheight">
+    <form>
+      <label for="search-input">Search</label>
+      <select id="queryParam">
+        <option value="movie">
+          Title
+        </option>
+        <option value="person">
+          Actor
+        </option>
+      </select>
+      <input type="text" id="search-input" placeholder="search" />
+    </form>
   </div>
   <div class="header-container">
     <a id="logo">
@@ -70,14 +82,6 @@
             </div>
           </div>
 
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <form>
-                <label for="search-input">Search</label>
-                <input type="text" id="search-input" placeholder="search" />
-              </form>
-            </div>
-          </div>
         </div>
       </nav>
     </header>
@@ -252,6 +256,6 @@
     });
   </script>
   <script src="./assets/scripts/script.js"></script>
-  </body>
+</body>
 
 </html>

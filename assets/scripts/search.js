@@ -345,6 +345,42 @@ let demoData = [
   },
 ];
 
+function displaySearch() {
+  var query = document.location.search.split("=")[1].split("&")[0]
+  var userInput = document.location.search.split("=")[2]
+  // console.log(query)
+  // console.log(userInput)
+
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTk1MWRmZGYwNGYyYTkzODcwZGE0NjM5ZjAyZjQ4NyIsInN1YiI6IjY0YTgzMTU0OTY1MjIwMDBhZTg0ZTI0MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.w8GB2JNYGmG1oe1PqVgUTRIsrjnSCGqb4OD0fE8WhN8'
+    }
+  };
+
+  fetch("https://api.themoviedb.org/3/search/" + query + "?query=" + userInput + "&include_adult=false&language=en-US&page=1", options)
+    .then(response => response.json())
+    .then(response => {
+      var results = response.results
+     
+      var moviePoster = document.getElementById('resultsPoster')
+      var movieTitle = document.getElementById('resultsTitle')
+      var moviePosterLink = "https://image.tmdb.org/t/p/w300"+ results[0].poster_path
+      moviePoster.src = moviePosterLink
+      
+      var movieTitleResult = results[0].original_title
+      var id = results[0].id
+  
+      movieTitle.innerHTML = movieTitleResult
+      console.log(results)
+      console.log(id)
+    })
+    .catch(err => console.error(err));
+
+}
+displaySearch()
+
 function getbyGenre() {
   let genreId = document.location.search.split("=")[1].split("&")[0];
   let genreName = document.location.search.split("&")[1].split("=")[1];
