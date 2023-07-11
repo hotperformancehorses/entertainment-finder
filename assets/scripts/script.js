@@ -154,7 +154,7 @@ formEl.addEventListener("submit", function(event){
   var queryParam = document.getElementById ("queryParam").value
   console.log(queryParam)
   location.assign("./search.html?"+"q="+queryParam+"&input="+searchInput)
-
+// MOVED BELOW CODE TO SEARCH.JS
   // const options = {
   //   method: 'GET',
   //   headers: {

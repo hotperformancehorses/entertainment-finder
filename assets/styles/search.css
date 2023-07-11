@@ -19,3 +19,8 @@
   color: #fff;
   box-shadow: 1px 2px 5px grey;
 }
+
+#resultsPoster{
+  height: 300px;
+  width: 200px;
+}
