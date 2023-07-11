@@ -68,3 +68,24 @@ li {
 a {
   color: white;
 }
+
+.testing {
+  width: 284px;
+}
+
+#movie-header, #tv-header {
+  font-family: 'Lilita One', cursive;
+  font-size: 25px; 
+}
+
+.slider-item {
+  width: 284px;
+}
+
+.slider-item img {
+  width: 284px;
+}
+
+.slider-container {
+  width: 2328px;
+}
