@@ -15,8 +15,21 @@
     />
     <link rel="stylesheet" href="./assets/styles/style.css" />
   </head>
-  <body">
-    <div id="background-image" class="hero is-halfheight"></div>
+  <body>
+    <div id="background-image" class="hero is-halfheight"> <div id="background-image" class="hero is-halfheight">
+      <form>
+        <label for="search-input">Search</label>
+          <select id="queryParam">
+            <option value="movie">
+              Title
+            </option>
+            <option value="person">
+              Actor
+            </option>
+          </select>
+        <input type="text" id="search-input" placeholder="search" <input class="input is-large" type="text" placeholder="Large input"/>
+      </form>
+    </div></div>
     <div class="header-container">
       
       <a id="logo" href="./index.html">
@@ -180,7 +193,7 @@
       bulmaCarousel.attach("#slider", {
         slidesToScroll: 1,
         slidesToShow: 5,
-        infinite: true,
+        loop: true,
         autoplay: true,
       });
     </script>

@@ -1,7 +1,7 @@
 #background-image {
   background-image: url("../images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
-  filter: blur(6px);
+  /* filter: blur(6px); */
   height: 60vh;
 }
 .header-container {
@@ -20,7 +20,10 @@
   box-shadow: 1px 2px 5px grey;
 }
 
-#resultsPoster{
+#resultsPoster
+{
   height: 300px;
   width: 200px;
+  justify-content: center;
+  
 }
