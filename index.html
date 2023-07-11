@@ -207,21 +207,28 @@
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <!--SCRIPT TAGS-->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
-    <script>
-      bulmaCarousel.attach("#slider", {
-        slidesToScroll: 1,
-        slidesToShow: 5,
-        infinite: true,
-        autoplay: true,
-      });
-    </script>
-    <script src="./assets/scripts/script.js"></script>
+  <!--SCRIPT TAGS-->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+  <script>
+    bulmaCarousel.attach("#slider", {
+      slidesToScroll: 1,
+      slidesToShow: 5,
+      loop: true,
+      autoplay: true,
+    });
+    bulmaCarousel.attach("#slider-two", {
+      slidesToScroll: 1,
+      slidesToShow: 2,
+      loop: true,
+      autoplay: true,
+    });
+  </script>
+  <script src="./assets/scripts/script.js"></script>
   </body>
 
 </html>
