@@ -2,11 +2,11 @@ body {
   position: relative;
 }
 #background-image {
-  background-image: url("/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
+  background-image: url("../images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
   width: 100%;
   filter: blur(4px);
-  height: 60vh;
+  /* height: 60vh; */
 }
 .header-container {
   width: 100%;
@@ -67,4 +67,25 @@ li {
 }
 a {
   color: white;
+}
+
+.testing {
+  width: 284px;
+}
+
+#movie-header, #tv-header {
+  font-family: 'Lilita One', cursive;
+  font-size: 25px; 
+}
+
+.slider-item {
+  width: 284px;
+}
+
+.slider-item img {
+  width: 284px;
+}
+
+.slider-container {
+  width: 2328px;
 }
