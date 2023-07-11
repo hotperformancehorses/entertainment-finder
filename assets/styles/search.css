@@ -10,16 +10,25 @@
   position: absolute;
   top: 2em;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
 }
-.header-container h1 {
-  padding: 0.25em 0.8em;
+#heading {
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  top: 10em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  align-items: center;
   color: #fff;
-  box-shadow: 1px 2px 5px grey;
 }
-
+.title {
+  color: #fff;
+}
 main {
   background-color: hsl(0, 0%, 21%);
   position: absolute;
