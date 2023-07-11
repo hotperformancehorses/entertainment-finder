@@ -145,7 +145,7 @@ function addToWatchList(e, obj) {
 // 'https://api.watchmode.com/v1/title/345534/details/?apiKey=YOUR_API_KEY&append_to_response=sources'
 function openTitleData(e, obj) {
   console.log(obj);
-  let streaming
+  let streaming = []; // to store the response from the fetch call
   let id = e.target.parentNode.parentNode.parentNode
     .getAttribute("data-id")
     .split("-")[1];
@@ -162,31 +162,12 @@ function openTitleData(e, obj) {
   fetch(`https://api.themoviedb.org/3/movie/${id}/watch/providers`, options)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response.results["US"]);
-      if (response.results.buy) {
-        logoBuy = response.results["US"].buy;
-        logoRent = response.results["US"].rent;
-      } else if (response.results.buy) {
-        logoBuy = response.results["US"].buy;
-      } else if (response.results.rent) {
-        logoRent = response.results["US"].rent;
-      }
-
-      let wrapper = document.createElement("div");
-      let buyFrom = document.createElement("div");
-      buyFrom.setAttribute("class", "iconColumn");
-      let rentFrom = document.createElement("div");
-      rentFrom.setAttribute("class", "iconColumn");
-      let header1 = document.createElement("h5");
-      header1.textContent = `Buy`;
-      let header2 = document.createElement("h5");
-      header2.textContent = `Rent`;
-      wrapper.appendChild(header1);
-      wrapper.appendChild(buyFrom);
-      wrapper.appendChild(header2);
-      wrapper.appendChild(rentFrom);
-      if (logoBuy.length !== 0) {
-        logoBuy.forEach((el) => {
+      let results = response.results["US"];
+      if (results !== null && Object.keys(results).includes("buy")) {
+        streaming = results["buy"];
+        let providers = document.createElement("div");
+        providers.setAttribute("class", "iconColumn");
+        streaming.forEach((el) => {
           let iconTile = document.createElement("span");
           let iconImage = document.createElement("img");
           iconImage.setAttribute("class", "icon");
@@ -194,37 +175,41 @@ function openTitleData(e, obj) {
             "src",
             `https://image.tmdb.org/t/p/w300${el.logo_path}`
           );
-
+          iconImage.setAttribute("alt", `${el.provider_name}`);
           iconTile.appendChild(iconImage);
-          buyFrom.appendChild(iconTile);
+          providers.appendChild(iconTile);
+        });
+        Swal.fire({
+          title: `${obj.original_name}`,
+          imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: `${obj.original_title}`,
+          html: providers,
+          text: `${obj.overview}`,
+        });
+      } else {
+        Swal.fire({
+          title: `${obj.original_name}`,
+          text: `${obj.overview}`,
+          imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: `${obj.original_title}`,
         });
       }
-      if (logoRent.length !== 0) {
-        logoRent.forEach((el) => {
-          let iconTile = document.createElement("span");
-          let iconImage = document.createElement("img");
-          iconImage.setAttribute("class", "icon");
-          iconImage.setAttribute(
-            "src",
-            `https://image.tmdb.org/t/p/w300${el.logo_path}`
-          );
-
-          iconTile.appendChild(iconImage);
-          rentFrom.appendChild(iconTile);
-        });
-      }
-
+    })
+    .catch((err) => {
       Swal.fire({
-        title: `${obj.original_title}`,
+        title: `${obj.original_name}`,
         text: `${obj.overview}`,
         imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: `${obj.original_title}`,
-        html: wrapper,
       });
-    })
-    .catch((err) => console.error(err));
+      console.error(err);
+    });
 }
 
 // {
