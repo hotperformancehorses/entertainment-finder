@@ -34,36 +34,83 @@ function showSearchCategory() {
   genreElement.textContent = genreName;
   searchResultByGenre = [];
 }
-
-// Gets the movie or tv data based on user's choice
-function getbyGenre(searchBy) {
-  let genreId = document.location.search.split("=")[1].split("&")[0];
-  cardHolder.setAttribute("data-show", `${searchBy}`);
+function displaySearch() {
+  var query = document.location.search.split("=")[1].split("&")[0];
+  var userInput = document.location.search.split("=")[2];
+  // console.log(query)
+  // console.log(userInput)
 
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjdlOTcyOWNhNzA5ZjRiNzE1NmJlZjNkMGI5ZDYwZCIsInN1YiI6IjY0YTgyMTM1OTU3ZTZkMDEzOWNmYzUxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yf03KF5yK3_pSaqifJRp2-tzgrrsvlPYENFI3cqpaWQ",
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTk1MWRmZGYwNGYyYTkzODcwZGE0NjM5ZjAyZjQ4NyIsInN1YiI6IjY0YTgzMTU0OTY1MjIwMDBhZTg0ZTI0MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.w8GB2JNYGmG1oe1PqVgUTRIsrjnSCGqb4OD0fE8WhN8",
     },
   };
 
   fetch(
-    `https://api.themoviedb.org/3/discover/${searchBy}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
+    "https://api.themoviedb.org/3/search/" +
+      query +
+      "?query=" +
+      userInput +
+      "&include_adult=false&language=en-US&page=1",
     options
   )
     .then((response) => response.json())
     .then((response) => {
-      let results = response.results;
-      if (results.length !== 0) {
-        searchResultByGenre = [...results];
-        renderCards(results, searchBy);
-      } else {
-        genreElement.textContent = "Not Found";
-      }
+      var results = response.results;
+
+      var moviePoster = document.getElementById("resultsPoster");
+      var movieTitle = document.getElementById("resultsTitle");
+      var moviePosterLink =
+        "https://image.tmdb.org/t/p/w300" + results[0].poster_path;
+      moviePoster.src = moviePosterLink;
+
+      var movieTitleResult = results[0].original_title;
+      var id = results[0].id;
+
+      movieTitle.innerHTML = movieTitleResult;
+      console.log(results);
+      console.log(id);
     })
     .catch((err) => console.error(err));
+}
+displaySearch();
+
+function getbyGenre() {
+  let genreId = document.location.search.split("=")[1].split("&")[0];
+
+  // Gets the movie or tv data based on user's choice
+  function getbyGenre(searchBy) {
+    let genreId = document.location.search.split("=")[1].split("&")[0];
+    cardHolder.setAttribute("data-show", `${searchBy}`);
+
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjdlOTcyOWNhNzA5ZjRiNzE1NmJlZjNkMGI5ZDYwZCIsInN1YiI6IjY0YTgyMTM1OTU3ZTZkMDEzOWNmYzUxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yf03KF5yK3_pSaqifJRp2-tzgrrsvlPYENFI3cqpaWQ",
+      },
+    };
+
+    fetch(
+      `https://api.themoviedb.org/3/discover/${searchBy}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        let results = response.results;
+        if (results.length !== 0) {
+          searchResultByGenre = [...results];
+          renderCards(results, searchBy);
+        } else {
+          genreElement.textContent = "Not Found";
+        }
+      })
+      .catch((err) => console.error(err));
+  }
 }
 
 //Click events
