@@ -87,14 +87,13 @@ a {
   color: white;
 }
 
-.testing {
-  width: 284px;
-}
-
 #movie-header,
 #tv-header {
   font-family: "Lilita One", cursive;
-  font-size: 25px;
+  font-size: 30px;
+  margin-left: 15px;
+  padding-top: 15px;
+  color: white;
 }
 
 .slider-item {
@@ -103,6 +102,7 @@ a {
 
 .slider-item img {
   width: 284px;
+  border-radius: 5px;
 }
 
 .slider-container {
