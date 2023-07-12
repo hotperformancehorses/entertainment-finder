@@ -6,6 +6,7 @@ let genreElement = document.getElementById("genreName");
 let category = ["movie", "tv"];
 let movieBtn = document.getElementById("movie-btn");
 let tvBtn = document.getElementById("tv-btn");
+let searchContainer = document.getElementById("card-container");
 let container = document.getElementById("watch-list");
 let storedData = [];
 let demoData = [
@@ -65,29 +66,29 @@ function displaySearch() {
     .then((response) => response.json())
     .then((response) => {
       var results = response.results;
-      var obj = results[0];
-      var moviePoster = document.getElementById("resultsPoster");
-      var movieTitle = document.getElementById("resultsTitle");
-      var moviePosterLink =
-        "https://image.tmdb.org/t/p/w300" + results[0].poster_path;
-      moviePoster.src = moviePosterLink;
-
-      var movieTitleResult = results[0].original_title;
-      var id = results[0].id;
-      var streamBtn = document.createElement("button");
-      streamBtn.innerText = "More Info";
-      streamBtn.setAttribute("data-id", id);
-      streamBtn.setAttribute("category", query);
-      streamBtn.setAttribute("class", "button");
-      streamBtn.addEventListener("click", (e) => {
-        openTitleData(e, obj, category);
-      });
-      let btnDiv = document.getElementById("btnDiv");
-      btnDiv.appendChild(streamBtn);
-
-      movieTitle.innerHTML = movieTitleResult;
       console.log(results);
-      console.log(id);
+      renderCards(results, query, searchContainer);
+      // var obj = results[0];
+      // var moviePoster = document.getElementById("resultsPoster");
+      // var movieTitle = document.getElementById("resultsTitle");
+      // var moviePosterLink =
+      //   "https://image.tmdb.org/t/p/w300" + results[0].poster_path;
+      // moviePoster.src = moviePosterLink;
+
+      // var movieTitleResult = results[0].original_title;
+      // var id = results[0].id;
+      // var streamBtn = document.createElement("button");
+      // streamBtn.innerText = "More Info";
+      // streamBtn.setAttribute("data-id", id);
+      // streamBtn.setAttribute("category", query);
+      // streamBtn.setAttribute("class", "button");
+      // streamBtn.addEventListener("click", (e) => {
+      //   openTitleData(e, obj, category);
+      // });
+      // let btnDiv = document.getElementById("btnDiv");
+      // btnDiv.appendChild(streamBtn);
+
+      // movieTitle.innerHTML = movieTitleResult;
     })
     .catch((err) => console.error(err));
 }
@@ -286,7 +287,6 @@ function openTitleData(e, obj, category) {
       }
     })
     .catch((err) => {
-      console.log(obj);
       Swal.fire({
         title: `${
           "original_title" in obj
