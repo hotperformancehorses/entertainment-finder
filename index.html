@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
   <link rel="stylesheet" href="./assets/styles/style.css" />
@@ -18,16 +18,31 @@
 <body>
   <div id="background-image" class="hero is-halfheight">
     <form>
-      <label for="search-input">Search</label>
+      <label for="search-input"></label>
       <select id="queryParam">
         <option value="movie">
-          Title
+          Movie
         </option>
-        <option value="person">
-          Actor
+        <option value="tv">
+          TV Show
         </option>
+        <!-- <option value="person"> <--FUTURE FUNCTIONALITY
+          Actor/Actress
+        </option> -->
       </select>
-      <input type="text" id="search-input" placeholder="search" />
+      <!-- <input class="input is-large input is-rounded control has-icons-left" type="text" id="search-input" placeholder="Search" />
+        <i class="fa-light fa-film-simple fa-shake"></i>
+      <span class="icon is-large is-left has-icons-left material-symbols-outlined">movie_info</span> -->
+      <div class="field">
+        <div class="control has-icons-left">
+          <input class="input is-large" type="text" placeholder="Search" id="searchBar">
+          <span class="icon is-medium is-left">
+            <i class="fa-solid fa-popcorn" style="color: #000000;"></i>
+          </span>
+        </div>
+      </div>
+  
+
     </form>
   </div>
   <div class="header-container">
@@ -222,6 +237,7 @@
 
   <!--SCRIPT TAGS-->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/4fe1823b27.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
   <script>
     bulmaCarousel.attach("#slider", {

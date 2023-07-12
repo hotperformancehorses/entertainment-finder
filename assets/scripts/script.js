@@ -174,7 +174,7 @@ var formEl = document.querySelector("form")
 formEl.addEventListener("submit", function(event){
   event.preventDefault()
   var searchInput = document.querySelector("#search-input").value
-  console.log(searchInput)
+  // console.log(searchInput)
   var queryParam = document.getElementById ("queryParam").value
   console.log(queryParam)
   location.assign("./search.html?"+"q="+queryParam+"&input="+searchInput)
@@ -349,40 +349,62 @@ var demodata = [
 
 
 
+var sliderParentTv = document.querySelector("#slider-two")
 
 function renderTV(data) {
+  console.log(data)
 const teleimg1= document.createElement("img");
 teleimg1.src= "https://image.tmdb.org/t/p/w300" + data.results[0].poster_path;
+teleimg1.setAttribute("data-titletv",data.results[0].original_name)
 tvOne.append(teleimg1);
 
 const teleimg2= document.createElement("img");
 teleimg2.src= "https://image.tmdb.org/t/p/w300" + data.results[1].poster_path;
+teleimg2.setAttribute("data-titletv",data.results[1].original_name)
 tvTwo.append(teleimg2);
 
 const teleimg3= document.createElement("img");
 teleimg3.src= "https://image.tmdb.org/t/p/w300" + data.results[2].poster_path;
+teleimg3.setAttribute("data-titletv",data.results[2].original_name)
 tvThree.append(teleimg3);
 
 const teleimg4= document.createElement("img");
 teleimg4.src= "https://image.tmdb.org/t/p/w300" + data.results[3].poster_path;
+teleimg4.setAttribute("data-titletv",data.results[3].original_name)
 tvFour.append(teleimg4);
 
 const teleimg5= document.createElement("img");
 teleimg5.src= "https://image.tmdb.org/t/p/w300" + data.results[4].poster_path;
+teleimg5.setAttribute("data-titletv",data.results[4].original_name)
 tvFive.append(teleimg5);
 
 const teleimg6= document.createElement("img");
 teleimg6.src= "https://image.tmdb.org/t/p/w300" + data.results[5].poster_path;
+teleimg6.setAttribute("data-titletv",data.results[5].original_name)
 tvSix.append(teleimg6);
 
 const teleimg7= document.createElement("img");
 teleimg7.src= "https://image.tmdb.org/t/p/w300" + data.results[6].poster_path;
+teleimg7.setAttribute("data-titletv",data.results[6].original_name)
 tvSeven.append(teleimg7);
 
 const teleimg8= document.createElement("img");
 teleimg8.src= "https://image.tmdb.org/t/p/w300" + data.results[7].poster_path;
+teleimg8.setAttribute("data-titletv",data.results[7].original_name)
 tvEight.append(teleimg8);
+  
 }
+
+sliderParentTv.addEventListener("click",function(event)
+{
+ 
+  if (event.target.matches("img"))
+  {
+    console.log(event.target.getAttribute("data-titletv"))
+    var tvTitle = event.target.getAttribute("data-titletv")
+    location.assign("./search.html?"+"q=tv&input="+tvTitle)
+  }
+})
 
 
 // function renderTV(data) {
