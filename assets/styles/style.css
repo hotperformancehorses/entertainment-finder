@@ -33,6 +33,13 @@ img {
 nav {
   width: 100%;
 }
+.show-heading,
+.color {
+  background-color: hsl(0, 0%, 21%);
+}
+main {
+  background-color: hsl(0, 0%, 21%);
+}
 #form {
   display: flex;
   width: 60%;
@@ -109,7 +116,7 @@ a {
   width: 2328px;
 }
 #watch-list {
-  background-color: rgb(22, 22, 22);
+  background-color: hsl(0, 0%, 21%);
   margin: 0 auto;
   margin-top: 3em;
   display: flex;
