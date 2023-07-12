@@ -28,10 +28,15 @@ let demoData = [
 ];
 showSearchCategory(); // called on page load
 
-// Shows search category
 function showSearchCategory() {
-  let genreName = document.location.search.split("&")[1].split("=")[1];
-  genreElement.textContent = genreName;
+  var query = document.location.search.split("=")[1].split("&")[0];
+  if (query === "movie" || query === "tv") {
+    var userInput = location.search.split("=")[2].split("%20").join(" ");
+    genreElement.textContent = userInput;
+  } else {
+    let genreName = document.location.search.split("&")[1].split("=")[1];
+    genreElement.textContent = genreName;
+  }
   searchResultByGenre = [];
 }
 
@@ -59,7 +64,7 @@ function displaySearch() {
     .then((response) => response.json())
     .then((response) => {
       var results = response.results;
-
+      var obj = results[0];
       var moviePoster = document.getElementById("resultsPoster");
       var movieTitle = document.getElementById("resultsTitle");
       var moviePosterLink =
@@ -68,6 +73,16 @@ function displaySearch() {
 
       var movieTitleResult = results[0].original_title;
       var id = results[0].id;
+      var streamBtn = document.createElement("button");
+      streamBtn.innerText = "More Info";
+      streamBtn.setAttribute("data-id", id);
+      streamBtn.setAttribute("category", query);
+      streamBtn.setAttribute("class", "button");
+      streamBtn.addEventListener("click", (e) => {
+        openTitleData(e, obj, category);
+      });
+      let btnDiv = document.getElementById("btnDiv");
+      btnDiv.appendChild(streamBtn);
 
       movieTitle.innerHTML = movieTitleResult;
       console.log(results);
@@ -184,11 +199,16 @@ function addToWatchList(e, obj) {
 
 // 'https://api.watchmode.com/v1/title/345534/details/?apiKey=YOUR_API_KEY&append_to_response=sources'
 function openTitleData(e, obj, category) {
-  console.log(obj);
+  let id;
+  if (e.target.hasAttribute("category")) {
+    id = e.target.dataset.id;
+  } else {
+    id = e.target.parentNode.parentNode.parentNode
+      .getAttribute("data-id")
+      .split("-")[1];
+  }
+
   let streaming = []; // to store the response from the fetch call
-  let id = e.target.parentNode.parentNode.parentNode
-    .getAttribute("data-id")
-    .split("-")[1];
 
   const options = {
     method: "GET",
@@ -274,11 +294,6 @@ function openTitleData(e, obj, category) {
     });
 }
 
-function showWatchlist() {
-  storedData = {};
-}
-
-
-function showStreamIcon(){
-  
-}
+// function showWatchlist() {
+//   storedData = {};
+// }
