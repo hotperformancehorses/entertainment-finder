@@ -2,11 +2,11 @@ body {
   position: relative;
 }
 #background-image {
-  background-image: url("/assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
+  background-image: url("../images/jason-dent-SnXIF8_2oPw-unsplash.jpg");
   background-size: cover;
   width: 100%;
-  filter: blur(4px);
-  height: 60vh;
+  /* filter: blur(4px); */
+  /* height: 60vh; */
 }
 .header-container {
   width: 100%;
@@ -33,6 +33,31 @@ img {
 nav {
   width: 100%;
 }
+.show-heading,
+.color {
+  background-color: hsl(0, 0%, 21%);
+}
+main {
+  background-color: hsl(0, 0%, 21%);
+}
+#form {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  align-content: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#form label {
+  color: #fff;
+  font-size: 1em;
+  margin-right: 1em;
+}
+#form input {
+  margin-left: 1em;
+}
 .slider-text {
   position: absolute;
   right: 0;
@@ -57,14 +82,73 @@ header {
 #logo-container {
   width: 10em;
 }
-ul {
+/* ul {
   border: 1px solid red;
   width: 100%;
-}
+} */
 li {
   color: white;
   list-style: none;
 }
 a {
   color: white;
+}
+
+#movie-header,
+#tv-header {
+  font-family: "Lilita One", cursive;
+  font-size: 30px;
+  margin-left: 15px;
+  padding-top: 15px;
+  color: white;
+}
+
+.slider-item {
+  width: 284px;
+}
+
+.slider-item img {
+  width: 284px;
+  border-radius: 5px;
+}
+
+.slider-container {
+  width: 2328px;
+}
+#watch-list {
+  background-color: hsl(0, 0%, 21%);
+  margin: 0 auto;
+  margin-top: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  margin: 1em;
+}
+.card img {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 0.3em;
+  box-shadow: 3px 2px 9px grey;
+}
+figure {
+  display: flex;
+  flex-direction: column-reverse;
+}
+figure button {
+  margin: 0 auto;
+  margin-top: 0.3em;
+  width: 80%;
+}
+#wishlist-heading {
+  margin-bottom: 2em;
+}
+.icon {
+  width: 2em;
+  height: fit-content;
+}
+.iconColumn {
+  display: flex;
+  justify-content: space-evenly;
 }

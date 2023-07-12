@@ -1,218 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Streamly!</title>
-    <link
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamly!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+   <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css"
+      integrity="sha256-7jUS+MWeqkFdmW9ozkZ7mPagz+QmMbsBlt+Q3MsE+FU="
+      crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"
-    />
-    <link rel="stylesheet" href="./assets/styles/style.css" />
-  </head>
-  <body">
-    <div class="hero is-halfheight;">
-      <img id="background-image" src="./assets/images/jason-dent-SnXIF8_2oPw-unsplash.jpg">
-    </div>
-    <div class="header-container">
-      <a id="logo">
-        <img src="./assets/images/Streamly!-logos_white.png">
-      </a>
-      <header id="header" class="is-flex is-flex-justify-content-space-evenly">
-        <nav
-          class="navbar is-dark"
-          role="navigation"
-          aria-label="main navigation"
-        >
-          <div class="navbar-brand">
-            <a
-              role="button"
-              class="navbar-burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasicExample"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
+  <link rel="stylesheet" href="./assets/styles/style.css" />
+</head>
+
+<body>
+  <div id="background-image" class="hero is-halfheight">
+  </div>
   
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item">Popular Movies</a>
-  
-              <a class="navbar-item">Popular Tv Shows</a>
-  
-              <a class="navbar-item">Watchlist</a>
-  
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link"> Genre </a>
-               <!-- Data ids represents genre id's on api.watchmode/v1/genre -->
-                <div class="navbar-dropdown">
-                  <a class="navbar-item is-hoverable genre" data-id='28' data-name="Action">Action</a>
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='12' data-name="Adventure">Adventure</a> 
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='16' data-name="Animation">Animation</a> 
-                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='35' data-name="Comedy">Comedy</a>
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='80' data-name="Crime">Crime</a>
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='18' data-name="Drama">Drama</a>
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='27' data-name="Horror">Horror</a>
-                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='10749' data-name="Romance">Romance</a> 
-                  <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='878' data-name="Science Fiction">Science Fiction</a>
-                   <hr class="navbar-divider" />
-                  <a class="navbar-item is-hoverable genre" data-id='53' data-name="Thriller">Thriller</a>
-                   
-                  
-                </div>
+  <form id="form" >
+     
+    <select id="queryParam" class="select ">
+      <option value="movie">
+        Movie
+      </option>
+      <option value="tv">
+        TV Show
+      </option>
+    </select>
+    <input class="input is-rounded" type="text" placeholder="Search by Movie or Tv show" id="search-input">
+    <!-- <input class="input is-large input is-rounded control has-icons-left" type="text"  placeholder="Search" />
+      <i class="fa-light fa-film-simple fa-shake"></i>
+    <span class="icon is-large is-left has-icons-left material-symbols-outlined">movie_info</span> -->
+    <!-- <div class="field">
+      <div class="control has-icons-left">
+        <input class="input is-large" type="text" placeholder="Search" id="searchBar">
+        <span class="icon is-medium is-left">
+          <i class="fa-solid fa-popcorn" style="color: #000000;"></i>
+        </span>
+      </div> -->
+  </form>
+  <div class="header-container">
+    <a id="logo">
+      <img src="./assets/images/Streamly!-logos_white.png">
+    </a>
+    <header id="header" class="is-flex is-flex-justify-content-space-evenly">
+      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+            data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="#slider">Popular Movies</a>
+
+            <a class="navbar-item" href="#slider-two">Popular Tv Shows</a>
+
+            <a class="navbar-item" href="#watch-list" onclick="showWatchlist()">Watchlist</a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link"> Genre </a>
+              <!-- Data ids represents genre id's on api.watchmode/v1/genre -->
+              <div class="navbar-dropdown">
+                <a class="navbar-item is-hoverable genre" data-id='28' data-name="Action">Action</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='12' data-name="Adventure">Adventure</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='16' data-name="Animation">Animation</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='35' data-name="Comedy">Comedy</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='80' data-name="Crime">Crime</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='18' data-name="Drama">Drama</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='27' data-name="Horror">Horror</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='10749' data-name="Romance">Romance</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='878' data-name="Science Fiction">Science Fiction</a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item is-hoverable genre" data-id='53' data-name="Thriller">Thriller</a>
+
+
               </div>
             </div>
-  
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <form>
-                  <label for="search-input">Search</label>
-                  <input type="text" id="search-input" placeholder="search" />
-                </form>
-              </div>
-            </div>
           </div>
-        </nav>
-      </header>
+
+        </div>
+      </nav>
+    </header>
+  </div>
+  <main>
+    <div class="show-heading">
+      <h1 id="movie-header">Trending Movies</h1>
     </div>
-    
-    <main>
-      <section>
-        <div id="slider">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-9by12 is-covered" id="movie-1">
-                <!-- <img src="https://source.unsplash.com/random/1200x500" alt="" /> -->
-              </figure>
-            </div>
-            <div class="card-content slider-text">
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-9by12 is-covered" id="movie-2">
-                <!-- <img src="https://source.unsplash.com/random/1200x500" alt="" /> -->
-              </figure>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">
-              <p class="image is-9by12 is-covered" id="movie-3">
-                <!-- <img src="https://source.unsplash.com/random/1300x500" alt="" /> -->
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">
-              <p class="image is-9by12 is-covered" id="movie-4">
-                <!-- <img src="https://source.unsplash.com/random/1300x500" alt="" /> -->
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">
-              <p class="image is-9by12 is-covered" id="movie-5">
-                <!-- <img src="https://source.unsplash.com/random/1300x500" alt="" /> -->
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">
-              <p class="image is-9by12 is-covered" id="movie-6">
-                <!-- <img src="https://source.unsplash.com/random/1300x500" alt="" /> -->
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">
-              <p class="image is-9by12 is-covered" id="movie-7">
-                <!-- <img src="https://source.unsplash.com/random/1300x500" alt="" /> -->
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">
-              <p class="image is-9by12 is-covered" id="movie-8">
-                <!-- <img src="https://source.unsplash.com/random/1300x500" alt="" /> -->
-              </p>
-            </div>
+    <!-- Start of carousel #1 -->
+    <section class="color">
+      <div id="slider">
+        <div class="card">
+          <div class="card-image">
+            <!-- id for movie and tv shows are targeted in javascript -->
+            <p class="image is-9by12 is-covered" id="movie-1">
+
+            </p>
           </div>
         </div>
-      </section>
-      <section style="margin-top: 100px; margin-bottom: 100px;">
-        <div id="slider-two">
-          <div class="card-two">
-            <div class="card-image-two">
-              <p class="image is-16by9 is-covered">
-                <img src="https://source.unsplash.com/random/1300x500" alt="" />
-            </div>
+        <div class="card">
+          <div class="card-image">
+            <p class="image is-9by12 is-covered" id="movie-2">
+
+            </p>
           </div>
-          <div class="card-two">
-            <div class="card-image-two">
-              <p class="image is-16by9 is-covered">
-                <img src="https://source.unsplash.com/random/1300x500" alt="" />
-            </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <p class="image is-9by12 is-covered" id="movie-3">
+
+            </p>
           </div>
-          <div class="card-two">
-            <div class="card-image-two">
-              <p class="image is-16by9 is-covered">
-                <img src="https://source.unsplash.com/random/1300x500" alt="" />
-            </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <p class="image is-9by12 is-covered" id="movie-4">
+
+            </p>
           </div>
-          <div class="card-two">
-            <div class="card-image-two">
-              <p class="image is-16by9 is-covered">
-                <img src="https://source.unsplash.com/random/1300x500" alt="" />
-            </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <p class="image is-9by12 is-covered" id="movie-5">
+
+            </p>
           </div>
-          <div class="card-two">
-            <div class="card-image-two">
-              <p class="image is-16by9 is-covered">
-                <img src="https://source.unsplash.com/random/1300x500" alt="" />
-            </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <p class="image is-9by12 is-covered" id="movie-6">
+
+            </p>
           </div>
-          <div class="card-two">
-            <div class="card-image-two">
-              <p class="image is-16by9 is-covered">
-                <img src="https://source.unsplash.com/random/1300x500" alt="" />
-            </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <p class="image is-9by12 is-covered" id="movie-7">
+
+            </p>
           </div>
-          <div class="card-two">
-            <div class="card-image-two">
-              <p class="image is-16by9 is-covered">
-                <img src="https://source.unsplash.com/random/1300x500" alt="" />
-            </div>
-          </div>
-          <div class="card-two">
-            <div class="card-image-two">
-              <p class="image is-16by9 is-covered">
-                <img src="https://source.unsplash.com/random/1300x500" alt="" />
-            </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <p class="image is-9by12 is-covered" id="movie-8">
+
+            </p>
           </div>
         </div>
       </div>
     </section>
+    <div class="show-heading">
+      <h1 id="tv-header">Trending TV Shows</h1>
+    </div>
+    <!-- Start of carousel #2 -->
+    <section class="color">
+      <!-- <section style="margin-top: 100px; margin-bottom: 100px;"> -->
+      <div id="slider-two">
+        <div class="card-two">
+          <div class="card-image-twocard-size">
+            <p class="image is-9by12 is-covered testing" id="tv-1">
+
+            </p>
+          </div>
+        </div>
+        <div class="card-two">
+          <div class="card-image-two">
+            <p class="image is-9by12 is-covered testing" id="tv-2">
+
+            </p>
+          </div>
+        </div>
+        <div class="card-two">
+          <div class="card-image-two">
+            <p class="image is-9by12 is-covered testing" id="tv-3">
+
+            </p>
+          </div>
+        </div>
+        <div class="card-two">
+          <div class="card-image-two">
+            <p class="image is-9by12 is-covered testing" id="tv-4">
+
+            </p>
+          </div>
+        </div>
+        <div class="card-two">
+          <div class="card-image-two">
+            <p class="image is-9by12 is-covered testing" id="tv-5">
+
+            </p>
+          </div>
+        </div>
+        <div class="card-two">
+          <div class="card-image-two">
+            <p class="image is-9by12 is-covered testing" id="tv-6">
+
+            </p>
+          </div>
+        </div>
+        <div class="card-two">
+          <div class="card-image-two">
+            <p class="image is-9by12 is-covered testing" id="tv-7">
+
+            </p>
+          </div>
+        </div>
+        <div class="card-two">
+          <div class="card-image-two">
+            <p class="image is-9by12 is-covered testing" id="tv-8">
+
+            </p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <div id="watch-list"></div>
   </main>
 
   <!--SCRIPT TAGS-->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/4fe1823b27.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
   <script>
     bulmaCarousel.attach("#slider", {
@@ -223,12 +250,18 @@
     });
     bulmaCarousel.attach("#slider-two", {
       slidesToScroll: 1,
-      slidesToShow: 2,
+      slidesToShow: 5,
       loop: true,
       autoplay: true,
     });
   </script>
+  <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"
+      integrity="sha256-2Dbg51yxfa7qZ8CSKqsNxHtph8UHdgbzxXF9ANtyJHo="
+      crossorigin="anonymous"
+    ></script>
+  <script src="./assets/scripts/search.js"></script>
   <script src="./assets/scripts/script.js"></script>
-  </body>
+</body>
 
 </html>
