@@ -1,6 +1,6 @@
 ## Streamly!
 <p align='center'>
-<img src="./assets/images/Streamly!-logos_black.png" width="500">
+<img src="./assets/images/Streamly!-logos_white.png" width="500">
 </p>
 ## Description
 
