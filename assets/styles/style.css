@@ -75,10 +75,10 @@ header {
 #logo-container {
   width: 10em;
 }
-ul {
+/* ul {
   border: 1px solid red;
   width: 100%;
-}
+} */
 li {
   color: white;
   list-style: none;
