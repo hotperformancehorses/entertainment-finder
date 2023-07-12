@@ -30,6 +30,7 @@
   color: #fff;
 }
 main {
+  width: 100%;
   background-color: hsl(0, 0%, 21%);
   position: absolute;
   z-index: 2;

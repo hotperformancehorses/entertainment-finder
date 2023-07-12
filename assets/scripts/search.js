@@ -80,8 +80,8 @@ displaySearch();
 // Gets the movie or tv data based on user's choice
 function getbyGenre(searchBy) {
   let genreId = document.location.search.split("=")[1].split("&")[0];
-  cardHolder.setAttribute("data-show", `${searchBy}`);
 
+  cardHolder.setAttribute("data-show", `${searchBy}`);
   const options = {
     method: "GET",
     headers: {
