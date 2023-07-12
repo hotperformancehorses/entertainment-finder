@@ -1,5 +1,5 @@
-## Streamly
-![Alt text](assets/images/Streamly!-logos_white.png)
+## Streamly!
+<img src="./assets/images/Streamly!-logos_black.png" width="500">
 
 ## Description
 
@@ -14,17 +14,43 @@ Our team worked tirelessly to provide a user friendly experience for any visitor
 
 Bulma. TMBD. Side by Side API's. 
 
+## ScreenShots
+
+![Alt text](./assets/images/image.png)
+![Alt text](assets/images/screencapture-hotperformancehorses-github-io-entertainment-finder-search-html-2023-07-12-10_58_06.png)
+
 ## Credits
 
-https://github.com/sucheta90
-https://github.com/safwaan41
-https://github.com/lilym036
-https://github.com/Mr-JadenDJordanS52
-https://github.com/hotperformancehorses
+Sucheta Mukherjee - https://github.com/sucheta90
 
+Safwaan Ahmed - https://github.com/safwaan41
+
+ Lilibeth Mejia - https://github.com/lilym036
+
+Jaden Jordan - https://github.com/Mr-JadenDJordanS52
+
+Rusty Lewis - https://github.com/hotperformancehorses
+
+## Sources
+BackGround Image -
+https://unsplash.com/photos/SnXIF8_2oPw
+
+TMDB - https://developer.themoviedb.org/docs
+
+WatchMode - https://api.watchmode.com/
+
+SweetAlert - https://sweetalert2.github.io/
+
+Bulma - https://bulma.io/
+
+Adobe Express - https://www.adobe.com/express/
+
+Google Fonts - https://fonts.google.com/
 ## Links
-![Alt text](<assets/images/qr-code (1).png>)
-![Alt text](assets/images/qr-code.png)
+<p>
+<img src="./assets/images/qr-code (1).png" width="100">
+<img src="./assets/images/qr-code.png" width="100">
+</p>
 
 https://github.com/hotperformancehorses/entertainment-finder
 https://hotperformancehorses.github.io/entertainment-finder/
