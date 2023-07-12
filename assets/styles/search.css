@@ -30,18 +30,13 @@
   color: #fff;
 }
 main {
+  width: 100%;
   background-color: hsl(0, 0%, 21%);
   position: absolute;
   z-index: 2;
   top: 25em;
 }
-#card-container {
-  height: fit-content;
-  /* border: 1px solid red; */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+
 figure {
   display: flex;
   flex-direction: column-reverse;
@@ -73,10 +68,16 @@ figure button {
   justify-content: space-evenly;
 }
 
-#resultsPoster
-{
+#resultsPoster {
   height: 300px;
   width: 200px;
   justify-content: center;
-  
+}
+#watch-list,
+#card-container,
+#tile-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

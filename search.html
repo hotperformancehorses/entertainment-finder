@@ -20,7 +20,7 @@
     <div id="background-image" class="hero is-fullheight"></div>
 
     <div class="header-container">
-      <a id="logo">
+      <a id="logo" href="./index.html">
         <img src="./assets/images/Streamly!-logos_white.png" />
       </a>
       <header id="header" class="is-flex is-flex-justify-content-space-evenly">
@@ -49,7 +49,12 @@
 
               <a class="navbar-item" href="./index.html">Popular Tv Shows</a>
 
-              <a class="navbar-item" href="./index.html">Watchlist</a>
+              <a
+                class="navbar-item"
+                href="#watch-list"
+                onclick="showWatchlist()"
+                >Watchlist</a
+              >
 
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link"> Genres </a>
@@ -128,14 +133,14 @@
               </div>
             </div>
 
-            <div class="navbar-end">
+            <!-- <div class="navbar-end">
               <div class="navbar-item">
                 <form>
                   <label for="search-input">Search</label>
                   <input type="text" id="search-input" placeholder="search" />
                 </form>
               </div>
-            </div>
+            </div> -->
           </div>
         </nav>
       </header>
@@ -152,23 +157,23 @@
     </div>
     <main>
       <div class="tile ia-ancestor" id="card-container"></div>
-      <div class="card">
+      <!-- <div class="card">
         <div class="">
           <figure class="image is-100x100">
-            <img src="" alt="" id="resultsPoster">
+            <img src="" alt="" id="resultsPoster" />
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
-            <div class="media-left">
-            </div>
-            <div class="media-content">
-              <p class="title is-4"id="resultsTitle"></p>
+            <div class="media-left"></div>
+            <div class="media-content" id="btnDiv">
+              <p class="title is-4" id="resultsTitle"></p>
             </div>
           </div>
         </div>
-      </div>
-      <div id="card-container"></div>
+      </div> -->
+      <div id="tile-container"></div>
+      <div id="watch-list"></div>
     </main>
     <script
       src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"

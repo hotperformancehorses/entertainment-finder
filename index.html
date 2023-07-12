@@ -9,7 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-  
+   <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css"
+      integrity="sha256-7jUS+MWeqkFdmW9ozkZ7mPagz+QmMbsBlt+Q3MsE+FU="
+      crossorigin="anonymous"
+    />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
   <link rel="stylesheet" href="./assets/styles/style.css" />
@@ -17,34 +22,30 @@
 
 <body>
   <div id="background-image" class="hero is-halfheight">
-    <form>
-      <label for="search-input"></label>
-      <select id="queryParam">
-        <option value="movie">
-          Movie
-        </option>
-        <option value="tv">
-          TV Show
-        </option>
-        <!-- <option value="person"> <--FUTURE FUNCTIONALITY
-          Actor/Actress
-        </option> -->
-      </select>
-      <!-- <input class="input is-large input is-rounded control has-icons-left" type="text" id="search-input" placeholder="Search" />
-        <i class="fa-light fa-film-simple fa-shake"></i>
-      <span class="icon is-large is-left has-icons-left material-symbols-outlined">movie_info</span> -->
-      <div class="field">
-        <div class="control has-icons-left">
-          <input class="input is-large" type="text" placeholder="Search" id="searchBar">
-          <span class="icon is-medium is-left">
-            <i class="fa-solid fa-popcorn" style="color: #000000;"></i>
-          </span>
-        </div>
-      </div>
-  
-
-    </form>
   </div>
+  
+  <form id="form" >
+     
+    <select id="queryParam" class="select ">
+      <option value="movie">
+        Movie
+      </option>
+      <option value="tv">
+        TV Show
+      </option>
+    </select>
+    <input class="input is-rounded" type="text" placeholder="Search by Movie or Tv show" id="search-input">
+    <!-- <input class="input is-large input is-rounded control has-icons-left" type="text"  placeholder="Search" />
+      <i class="fa-light fa-film-simple fa-shake"></i>
+    <span class="icon is-large is-left has-icons-left material-symbols-outlined">movie_info</span> -->
+    <!-- <div class="field">
+      <div class="control has-icons-left">
+        <input class="input is-large" type="text" placeholder="Search" id="searchBar">
+        <span class="icon is-medium is-left">
+          <i class="fa-solid fa-popcorn" style="color: #000000;"></i>
+        </span>
+      </div> -->
+  </form>
   <div class="header-container">
     <a id="logo">
       <img src="./assets/images/Streamly!-logos_white.png">
@@ -62,11 +63,11 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">Popular Movies</a>
+            <a class="navbar-item" href="#slider">Popular Movies</a>
 
-            <a class="navbar-item">Popular Tv Shows</a>
+            <a class="navbar-item" href="#slider-two">Popular Tv Shows</a>
 
-            <a class="navbar-item">Watchlist</a>
+            <a class="navbar-item" href="#watch-list" onclick="showWatchlist()">Watchlist</a>
 
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link"> Genre </a>
@@ -233,6 +234,7 @@
       </div>
       </div>
     </section>
+    <div id="watch-list"></div>
   </main>
 
   <!--SCRIPT TAGS-->
@@ -253,6 +255,12 @@
       autoplay: true,
     });
   </script>
+  <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"
+      integrity="sha256-2Dbg51yxfa7qZ8CSKqsNxHtph8UHdgbzxXF9ANtyJHo="
+      crossorigin="anonymous"
+    ></script>
+  <script src="./assets/scripts/search.js"></script>
   <script src="./assets/scripts/script.js"></script>
 </body>
 

@@ -1,12 +1,14 @@
 // const api_key_sucheta_watchmode = "GuNGDaJ1Dqvw6nIrD3bG9dc6LAb0Rjs4YjZUe9Lt"; limit exceeded.
 // const api_key_su = "PByuLqDSSGFYSHuu6g1O8FVZGP6tCXRz583czW24";
-let cardHolder = document.getElementById("card-container");
+let cardHolder = document.getElementById("tile-container");
 let searchResultByGenre = [];
 let genreElement = document.getElementById("genreName");
 let category = ["movie", "tv"];
 let movieBtn = document.getElementById("movie-btn");
 let tvBtn = document.getElementById("tv-btn");
-let storedData = {};
+let searchContainer = document.getElementById("card-container");
+let container = document.getElementById("watch-list");
+let storedData = [];
 let demoData = [
   {
     adult: false,
@@ -28,18 +30,22 @@ let demoData = [
 ];
 showSearchCategory(); // called on page load
 
-// Shows search category
 function showSearchCategory() {
-  let genreName = document.location.search.split("&")[1].split("=")[1];
-  genreElement.textContent = genreName;
+  var query = document.location.search.split("=")[1].split("&")[0];
+  if (query === "movie" || query === "tv") {
+    var userInput = location.search.split("=")[2].split("%20").join(" ");
+    genreElement.textContent = userInput;
+  } else {
+    let genreName = document.location.search.split("&")[1].split("=")[1];
+    genreElement.textContent = genreName;
+  }
   searchResultByGenre = [];
 }
+
+// Shows search results
 function displaySearch() {
   var query = document.location.search.split("=")[1].split("&")[0];
   var userInput = document.location.search.split("=")[2];
-  // console.log(query)
-  // console.log(userInput)
-
   const options = {
     method: "GET",
     headers: {
@@ -60,57 +66,63 @@ function displaySearch() {
     .then((response) => response.json())
     .then((response) => {
       var results = response.results;
-
-      var moviePoster = document.getElementById("resultsPoster");
-      var movieTitle = document.getElementById("resultsTitle");
-      var moviePosterLink =
-        "https://image.tmdb.org/t/p/w300" + results[0].poster_path;
-      moviePoster.src = moviePosterLink;
-
-      var movieTitleResult = results[0].original_title;
-      var id = results[0].id;
-
-      movieTitle.innerHTML = movieTitleResult;
       console.log(results);
-      console.log(id);
+      renderCards(results, query, searchContainer);
+      // var obj = results[0];
+      // var moviePoster = document.getElementById("resultsPoster");
+      // var movieTitle = document.getElementById("resultsTitle");
+      // var moviePosterLink =
+      //   "https://image.tmdb.org/t/p/w300" + results[0].poster_path;
+      // moviePoster.src = moviePosterLink;
+
+      // var movieTitleResult = results[0].original_title;
+      // var id = results[0].id;
+      // var streamBtn = document.createElement("button");
+      // streamBtn.innerText = "More Info";
+      // streamBtn.setAttribute("data-id", id);
+      // streamBtn.setAttribute("category", query);
+      // streamBtn.setAttribute("class", "button");
+      // streamBtn.addEventListener("click", (e) => {
+      //   openTitleData(e, obj, category);
+      // });
+      // let btnDiv = document.getElementById("btnDiv");
+      // btnDiv.appendChild(streamBtn);
+
+      // movieTitle.innerHTML = movieTitleResult;
     })
     .catch((err) => console.error(err));
 }
 displaySearch();
 
-function getbyGenre() {
+// Gets the movie or tv data based on user's choice
+function getbyGenre(searchBy) {
   let genreId = document.location.search.split("=")[1].split("&")[0];
 
-  // Gets the movie or tv data based on user's choice
-  function getbyGenre(searchBy) {
-    let genreId = document.location.search.split("=")[1].split("&")[0];
-    cardHolder.setAttribute("data-show", `${searchBy}`);
+  cardHolder.setAttribute("data-show", `${searchBy}`);
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjdlOTcyOWNhNzA5ZjRiNzE1NmJlZjNkMGI5ZDYwZCIsInN1YiI6IjY0YTgyMTM1OTU3ZTZkMDEzOWNmYzUxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yf03KF5yK3_pSaqifJRp2-tzgrrsvlPYENFI3cqpaWQ",
+    },
+  };
 
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjdlOTcyOWNhNzA5ZjRiNzE1NmJlZjNkMGI5ZDYwZCIsInN1YiI6IjY0YTgyMTM1OTU3ZTZkMDEzOWNmYzUxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yf03KF5yK3_pSaqifJRp2-tzgrrsvlPYENFI3cqpaWQ",
-      },
-    };
-
-    fetch(
-      `https://api.themoviedb.org/3/discover/${searchBy}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        let results = response.results;
-        if (results.length !== 0) {
-          searchResultByGenre = [...results];
-          renderCards(results, searchBy);
-        } else {
-          genreElement.textContent = "Not Found";
-        }
-      })
-      .catch((err) => console.error(err));
-  }
+  fetch(
+    `https://api.themoviedb.org/3/discover/${searchBy}?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`,
+    options
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      let results = response.results;
+      if (results.length !== 0) {
+        searchResultByGenre = [...results];
+        renderCards(results, searchBy, cardHolder);
+      } else {
+        genreElement.textContent = "Not Found";
+      }
+    })
+    .catch((err) => console.error(err));
 }
 
 //Click events
@@ -140,7 +152,7 @@ tvBtn.addEventListener("click", (e) => {
 });
 
 // Renders the card/tiles dynamically
-function renderCards(data, category) {
+function renderCards(data, category, div) {
   data.forEach((obj) => {
     let card = document.createElement("div");
     card.setAttribute("class", "card");
@@ -155,13 +167,13 @@ function renderCards(data, category) {
     moreinfo.setAttribute("id", "moreInfo");
     moreinfo.setAttribute("class", "button");
     moreinfo.addEventListener("click", (e) => {
-      openTitleData(e, obj);
+      openTitleData(e, obj, category);
     });
     let addToWatch = document.createElement("button");
     addToWatch.setAttribute("id", "addToWatch");
     addToWatch.setAttribute("class", "button");
     addToWatch.addEventListener("click", (e) => {
-      addToWatchList(e, obj);
+      addToWatchList(e, obj, category);
     });
     addToWatch.innerText = "Add to Watchlist";
     figure.appendChild(moreinfo);
@@ -174,28 +186,41 @@ function renderCards(data, category) {
     );
     img.setAttribute("alt", `${obj.original_title}`);
     figure.appendChild(img);
-    cardHolder.appendChild(card);
+    div.appendChild(card);
   });
 }
 
-// renderCards(demoData);
-
 //Function to store on localStorage
-function addToWatchList(e, obj) {
+function addToWatchList(e, obj, category) {
   let id = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
-  let val = obj;
-  storedData[id] = val;
+  // let val = obj;
+  obj[category] = category;
+  obj[id] = id;
+  storedData.push(obj);
+  // storedData[id] = val;
   let tempdata = JSON.stringify(storedData);
-  localStorage.setItem("movieData", tempdata);
+  localStorage.setItem(`${category}`, tempdata);
+  Swal.fire({
+    position: "top-end",
+    icon: "success",
+    title: "Added to watchlist",
+    showConfirmButton: false,
+    timer: 1500,
+  });
 }
 
 // 'https://api.watchmode.com/v1/title/345534/details/?apiKey=YOUR_API_KEY&append_to_response=sources'
-function openTitleData(e, obj) {
-  console.log(obj);
+function openTitleData(e, obj, category) {
+  let id;
+  if (e.target.hasAttribute("category")) {
+    id = e.target.dataset.id;
+  } else {
+    id = e.target.parentNode.parentNode.parentNode
+      .getAttribute("data-id")
+      .split("-")[1];
+  }
+
   let streaming = []; // to store the response from the fetch call
-  let id = e.target.parentNode.parentNode.parentNode
-    .getAttribute("data-id")
-    .split("-")[1];
 
   const options = {
     method: "GET",
@@ -206,7 +231,10 @@ function openTitleData(e, obj) {
     },
   };
 
-  fetch(`https://api.themoviedb.org/3/movie/${id}/watch/providers`, options)
+  fetch(
+    `https://api.themoviedb.org/3/${category}/${id}/watch/providers`,
+    options
+  )
     .then((response) => response.json())
     .then((response) => {
       let results = response.results["US"];
@@ -227,7 +255,13 @@ function openTitleData(e, obj) {
           providers.appendChild(iconTile);
         });
         Swal.fire({
-          title: `${obj.original_name}`,
+          title: `${
+            "original_title" in obj
+              ? obj.original_title
+              : "original_name" in obj
+              ? obj.original_name
+              : ""
+          }`,
           imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
           imageWidth: 400,
           imageHeight: 200,
@@ -237,7 +271,13 @@ function openTitleData(e, obj) {
         });
       } else {
         Swal.fire({
-          title: `${obj.original_name}`,
+          title: `${
+            "original_title" in obj
+              ? obj.original_title
+              : "original_name" in obj
+              ? obj.original_name
+              : ""
+          }`,
           text: `${obj.overview}`,
           imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
           imageWidth: 400,
@@ -248,7 +288,13 @@ function openTitleData(e, obj) {
     })
     .catch((err) => {
       Swal.fire({
-        title: `${obj.original_name}`,
+        title: `${
+          "original_title" in obj
+            ? obj.original_title
+            : "original_name" in obj
+            ? obj.original_name
+            : ""
+        }`,
         text: `${obj.overview}`,
         imageUrl: `https://image.tmdb.org/t/p/w300${obj.backdrop_path}`,
         imageWidth: 400,
@@ -257,4 +303,23 @@ function openTitleData(e, obj) {
       });
       console.error(err);
     });
+}
+
+function showWatchlist() {
+  if (container.children) {
+    container.innerHTML = "";
+  }
+  let tv = JSON.parse(localStorage.getItem("tv"));
+  let movie = JSON.parse(localStorage.getItem("movie"));
+  let heading = document.createElement("h1");
+  heading.textContent = `Showing Watchlist`;
+  heading.setAttribute("class", "title");
+  container.insertAdjacentElement("beforebegin", heading);
+  // container.appendChild(heading);
+  if (tv !== null) {
+    renderCards(tv, (category = "tv"), container);
+  }
+  if (movie !== null) {
+    renderCards(movie, (category = "movie"), container);
+  }
 }
