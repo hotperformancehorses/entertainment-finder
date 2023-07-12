@@ -1,6 +1,7 @@
 ## Streamly!
+<p align='center'>
 <img src="./assets/images/Streamly!-logos_black.png" width="500">
-
+</p>
 ## Description
 
 As a team, we were presented with an challenge to build a website using two API's side by side that showcased our abilities with its functionality. We chose to design and deploy a page that would allow the end user to not only view details about various movies and TV shows, but also to check availability on various streaming platforms for the content. 
