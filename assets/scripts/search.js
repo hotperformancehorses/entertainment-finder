@@ -277,3 +277,8 @@ function openTitleData(e, obj, category) {
 function showWatchlist() {
   storedData = {};
 }
+
+
+function showStreamIcon(){
+  
+}
