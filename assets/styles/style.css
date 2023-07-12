@@ -33,18 +33,22 @@ img {
 nav {
   width: 100%;
 }
-form {
+#form {
   display: flex;
-  width: 80%;
+  width: 60%;
   justify-content: space-between;
-  align-items: center;
+  align-content: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-form label {
+#form label {
   color: #fff;
-  font-size: 1.5em;
+  font-size: 1em;
   margin-right: 1em;
 }
-form input {
+#form input {
   margin-left: 1em;
 }
 .slider-text {
@@ -81,12 +85,6 @@ li {
 }
 a {
   color: white;
-}
-form {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .testing {

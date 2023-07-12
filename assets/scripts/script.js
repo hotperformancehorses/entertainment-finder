@@ -167,7 +167,7 @@ function getmovieApi() {
 }
 
 // Search bar functionality
-var formEl = document.querySelector("form");
+var formEl = document.querySelector("#form");
 formEl.addEventListener("submit", function (event) {
   event.preventDefault();
   var searchInput = document.querySelector("#search-input").value;
