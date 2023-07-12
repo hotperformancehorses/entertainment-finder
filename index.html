@@ -62,11 +62,11 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">Popular Movies</a>
+            <a class="navbar-item" href="#slider">Popular Movies</a>
 
-            <a class="navbar-item">Popular Tv Shows</a>
+            <a class="navbar-item" href="#slider-two">Popular Tv Shows</a>
 
-            <a class="navbar-item">Watchlist</a>
+            <a class="navbar-item" href="#watchlist" onclick="showWatchlist()">Watchlist</a>
 
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link"> Genre </a>
@@ -230,6 +230,7 @@
       </div>
       </div>
     </section>
+    <div id="watch-list"></div>
   </main>
 
   <!--SCRIPT TAGS-->
@@ -250,6 +251,7 @@
       autoplay: true,
     });
   </script>
+  <script src="./assets/scripts/search.js"></script>
   <script src="./assets/scripts/script.js"></script>
 </body>
 

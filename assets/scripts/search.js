@@ -6,7 +6,8 @@ let genreElement = document.getElementById("genreName");
 let category = ["movie", "tv"];
 let movieBtn = document.getElementById("movie-btn");
 let tvBtn = document.getElementById("tv-btn");
-let storedData = {};
+let container = document.getElementById("watch-list");
+let storedData = [];
 let demoData = [
   {
     adult: false,
@@ -115,7 +116,7 @@ function getbyGenre(searchBy) {
       let results = response.results;
       if (results.length !== 0) {
         searchResultByGenre = [...results];
-        renderCards(results, searchBy);
+        renderCards(results, searchBy, cardHolder);
       } else {
         genreElement.textContent = "Not Found";
       }
@@ -150,7 +151,7 @@ tvBtn.addEventListener("click", (e) => {
 });
 
 // Renders the card/tiles dynamically
-function renderCards(data, category) {
+function renderCards(data, category, div) {
   data.forEach((obj) => {
     let card = document.createElement("div");
     card.setAttribute("class", "card");
@@ -171,7 +172,7 @@ function renderCards(data, category) {
     addToWatch.setAttribute("id", "addToWatch");
     addToWatch.setAttribute("class", "button");
     addToWatch.addEventListener("click", (e) => {
-      addToWatchList(e, obj);
+      addToWatchList(e, obj, category);
     });
     addToWatch.innerText = "Add to Watchlist";
     figure.appendChild(moreinfo);
@@ -184,17 +185,27 @@ function renderCards(data, category) {
     );
     img.setAttribute("alt", `${obj.original_title}`);
     figure.appendChild(img);
-    cardHolder.appendChild(card);
+    div.appendChild(card);
   });
 }
 
 //Function to store on localStorage
-function addToWatchList(e, obj) {
+function addToWatchList(e, obj, category) {
   let id = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
-  let val = obj;
-  storedData[id] = val;
+  // let val = obj;
+  obj[category] = category;
+  obj[id] = id;
+  storedData.push(obj);
+  // storedData[id] = val;
   let tempdata = JSON.stringify(storedData);
-  localStorage.setItem("movieData", tempdata);
+  localStorage.setItem(`${category}`, tempdata);
+  Swal.fire({
+    position: "top-end",
+    icon: "success",
+    title: "Added to watchlist",
+    showConfirmButton: false,
+    timer: 1500,
+  });
 }
 
 // 'https://api.watchmode.com/v1/title/345534/details/?apiKey=YOUR_API_KEY&append_to_response=sources'
@@ -294,6 +305,21 @@ function openTitleData(e, obj, category) {
     });
 }
 
-// function showWatchlist() {
-//   storedData = {};
-// }
+function showWatchlist() {
+  if (container.children) {
+    container.innerHTML = "";
+  }
+  let tv = JSON.parse(localStorage.getItem("tv"));
+  let movie = JSON.parse(localStorage.getItem("movie"));
+  let heading = document.createElement("h1");
+  heading.textContent = `Showing Watchlist`;
+  heading.setAttribute("class", "title");
+  container.insertAdjacentElement("beforebegin", heading);
+  // container.appendChild(heading);
+  if (tv !== null) {
+    renderCards(tv, (category = "tv"), container);
+  }
+  if (movie !== null) {
+    renderCards(movie, (category = "movie"), container);
+  }
+}

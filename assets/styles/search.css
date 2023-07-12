@@ -79,3 +79,12 @@ figure button {
   width: 200px;
   justify-content: center;
 }
+#watch-list {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/* #wishlist-heading {
+  margin-bottom: 2em;
+} */

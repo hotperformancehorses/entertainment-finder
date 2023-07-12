@@ -96,3 +96,32 @@ form {
 .slider-container {
   width: 2328px;
 }
+#watch-list {
+  background-color: rgb(22, 22, 22);
+  margin: 0 auto;
+  margin-top: 3em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  margin: 1em;
+}
+.card img {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 0.3em;
+  box-shadow: 3px 2px 9px grey;
+}
+figure {
+  display: flex;
+  flex-direction: column-reverse;
+}
+figure button {
+  margin: 0 auto;
+  margin-top: 0.3em;
+  width: 80%;
+}
+#wishlist-heading {
+  margin-bottom: 2em;
+}
