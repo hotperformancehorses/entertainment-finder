@@ -33,6 +33,20 @@ img {
 nav {
   width: 100%;
 }
+form {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+}
+form label {
+  color: #fff;
+  font-size: 1.5em;
+  margin-right: 1em;
+}
+form input {
+  margin-left: 1em;
+}
 .slider-text {
   position: absolute;
   right: 0;
