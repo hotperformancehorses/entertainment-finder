@@ -68,27 +68,6 @@ function displaySearch() {
       var results = response.results;
       console.log(results);
       renderCards(results, query, searchContainer);
-      // var obj = results[0];
-      // var moviePoster = document.getElementById("resultsPoster");
-      // var movieTitle = document.getElementById("resultsTitle");
-      // var moviePosterLink =
-      //   "https://image.tmdb.org/t/p/w300" + results[0].poster_path;
-      // moviePoster.src = moviePosterLink;
-
-      // var movieTitleResult = results[0].original_title;
-      // var id = results[0].id;
-      // var streamBtn = document.createElement("button");
-      // streamBtn.innerText = "More Info";
-      // streamBtn.setAttribute("data-id", id);
-      // streamBtn.setAttribute("category", query);
-      // streamBtn.setAttribute("class", "button");
-      // streamBtn.addEventListener("click", (e) => {
-      //   openTitleData(e, obj, category);
-      // });
-      // let btnDiv = document.getElementById("btnDiv");
-      // btnDiv.appendChild(streamBtn);
-
-      // movieTitle.innerHTML = movieTitleResult;
     })
     .catch((err) => console.error(err));
 }
